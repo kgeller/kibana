@@ -13,6 +13,7 @@ const EXCLUDED_PACKAGES = [
   'apm',
   'cloud_security_posture',
   'cloud_defend',
+  'cribl',
   'dga',
   'fleet_server',
   'osquery_manager',
