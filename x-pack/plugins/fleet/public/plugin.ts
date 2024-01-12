@@ -307,7 +307,6 @@ export class FleetPlugin implements Plugin<FleetSetup, FleetStart, FleetSetupDep
       view: 'package-detail-assets',
       Component: LazyCustomLogsAssetsExtension,
     });
-
     const { capabilities } = core.application;
 
     // Set the custom integrations language clients
