@@ -5,4 +5,4 @@
  * 2.0.
  */
 
-export * from './custom_cribl_extension';
+export * from './lazy_custom_cribl_extension';

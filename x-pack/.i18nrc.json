@@ -19,6 +19,7 @@
     "xpack.cloudDataMigration": "plugins/cloud_integrations/cloud_data_migration",
     "xpack.csp": "plugins/cloud_security_posture",
     "xpack.customBranding": "plugins/custom_branding",
+    "xpack.customIntegrations": "plugins/custom_integrations",
     "xpack.dashboard": "plugins/dashboard_enhanced",
     "xpack.datasetQuality": "plugins/dataset_quality",
     "xpack.discover": "plugins/discover_enhanced",

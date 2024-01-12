@@ -67,7 +67,7 @@ import type {
 
 import { API_VERSIONS } from '../common/constants';
 
-import { CUSTOM_CRIBL_INTEGRATION_NAME, CUSTOM_LOGS_INTEGRATION_NAME, INTEGRATIONS_BASE_PATH } from './constants';
+import { CUSTOM_LOGS_INTEGRATION_NAME, INTEGRATIONS_BASE_PATH } from './constants';
 import type { RequestError } from './hooks';
 import { licenseService, sendGetBulkAssets } from './hooks';
 import { setHttpClient } from './hooks/use_request';
@@ -84,7 +84,6 @@ import type {
 import { LazyCustomLogsAssetsExtension } from './lazy_custom_logs_assets_extension';
 import { setCustomIntegrations, setCustomIntegrationsStart } from './services/custom_integrations';
 import { getFleetDeepLinks } from './deep_links';
-import { LazyCustomCriblExtension } from './custom_integrations/lazy_custom_cribl_extension';
 
 export type { FleetConfigType } from '../common/types';
 
@@ -307,12 +306,6 @@ export class FleetPlugin implements Plugin<FleetSetup, FleetStart, FleetSetupDep
       package: CUSTOM_LOGS_INTEGRATION_NAME,
       view: 'package-detail-assets',
       Component: LazyCustomLogsAssetsExtension,
-    });
-
-    registerExtension({
-      package: CUSTOM_CRIBL_INTEGRATION_NAME,
-      view: 'package-policy-replace-define-step',
-      Component: LazyCustomCriblExtension,
     });
 
     const { capabilities } = core.application;

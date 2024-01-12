@@ -1,0 +1,7 @@
+{
+  "prefix": "integrations",
+  "paths": {
+    "integrations": "."
+  },
+  "translations": ["translations/ja-JP.json"]
+}

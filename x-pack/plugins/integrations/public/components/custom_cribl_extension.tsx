@@ -5,12 +5,12 @@
  * 2.0.
  */
 
-import React from "react";
+import React, { memo } from "react";
 import { EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiFormRow, EuiSpacer } from '@elastic/eui';
-import { PackagePolicyReplaceDefineStepExtensionComponent } from "../applications/fleet/types";
-import { FormattedMessage } from "@kbn/i18n-react";
 import styled from "styled-components";
 import { i18n } from "@kbn/i18n";
+import { PackagePolicyReplaceDefineStepExtensionComponentProps } from "@kbn/fleet-plugin/public/types";
+import { FormattedMessage } from "react-intl";
 
 const FlexItemWithLabel = styled(EuiFlexItem)`
   padding-top: 30px;
@@ -22,14 +22,17 @@ interface RouteEntry {
   datastream: string;
 }
 
-//let routeEntries = new Map<string, string>([["cs1", "ds1"], ["cs2", "ds2"], ["cs3", "ds3"]])
 const routeEntries: RouteEntry[] = [
   { criblSource: "cs1", datastream: "ds1" },
   { criblSource: "cs2", datastream: "ds2" },
   { criblSource: "cs3", datastream: "ds3" },
 ];
 
-export const CustomCriblExtension: PackagePolicyReplaceDefineStepExtensionComponent = () => {
+// export const CustomCriblExtension: PackagePolicyReplaceDefineStepExtensionComponent = () => {
+
+export const CustomCriblExtension = memo<PackagePolicyReplaceDefineStepExtensionComponentProps>(
+  ({
+  }) => {
 
   return (
     <>
@@ -69,4 +72,4 @@ export const CustomCriblExtension: PackagePolicyReplaceDefineStepExtensionCompon
     </EuiFlexGroup>
   </>
   );
-};
+});

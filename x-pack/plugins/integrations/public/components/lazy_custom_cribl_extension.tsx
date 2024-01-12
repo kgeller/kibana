@@ -5,8 +5,8 @@
  * 2.0.
  */
 
+import { PackagePolicyReplaceDefineStepExtensionComponent } from '@kbn/fleet-plugin/public/types';
 import { lazy } from 'react';
-import { PackagePolicyReplaceDefineStepExtensionComponent } from '../applications/fleet/types';
 import { CustomCriblExtension } from './custom_cribl_extension';
 
 export const LazyCustomCriblExtension = lazy<PackagePolicyReplaceDefineStepExtensionComponent>(async () => {

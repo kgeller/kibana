@@ -33,7 +33,6 @@ export * from './page_paths';
 export const INDEX_NAME = INGEST_SAVED_OBJECT_INDEX;
 
 export const CUSTOM_LOGS_INTEGRATION_NAME = 'log';
-export const CUSTOM_CRIBL_INTEGRATION_NAME = 'cribl';
 
 export const DURATION_APM_SETTINGS_VARS = {
   IDLE_TIMEOUT: 'idle_timeout',

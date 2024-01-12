@@ -1528,6 +1528,9 @@ x-pack/plugins/security_solution/common/api/entity_analytics @elastic/security-e
 # Security Solution onboarding tour
 /x-pack/plugins/security_solution/public/common/components/guided_onboarding @elastic/security-threat-hunting-explore
 
+# Security External Integrations
+/x-pack/plugins/integrations @elastic/security-external-integrations
+
 # Kibana design
 # scss overrides should be below this line for specificity
 **/*.scss @elastic/kibana-design

@@ -1,0 +1,19 @@
+{
+  "type": "plugin",
+  "id": "@kbn/integrations",
+  "owner": "@elastic/security-external-integrations",
+  "description": "A home for custom fleet integrations",
+  "plugin": {
+    "id": "integrations",
+    "server": true,
+    "browser": true,
+    "requiredPlugins": [
+      "data",
+      "fleet"
+    ],
+    "configPath": [
+      "xpack",
+      "integrations"
+    ],
+  }
+}
