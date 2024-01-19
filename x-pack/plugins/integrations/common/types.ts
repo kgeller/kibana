@@ -5,5 +5,7 @@
  * 2.0.
  */
 
-export const PLUGIN_ID = 'customIntegrations';
-export const PLUGIN_NAME = 'customIntegrations';
+export interface RouteEntry {
+  criblSourceId: string;
+  destinationDatastream: string;
+}

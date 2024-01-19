@@ -9,8 +9,10 @@ import { PackagePolicyReplaceDefineStepExtensionComponent } from '@kbn/fleet-plu
 import { lazy } from 'react';
 import { CustomCriblExtension } from './custom_cribl_extension';
 
-export const LazyCustomCriblExtension = lazy<PackagePolicyReplaceDefineStepExtensionComponent>(async () => {
-  return {
-    default: CustomCriblExtension,
-  };
-});
+export const LazyCustomCriblExtension = lazy<PackagePolicyReplaceDefineStepExtensionComponent>(
+  async () => {
+    return {
+      default: CustomCriblExtension,
+    };
+  }
+);

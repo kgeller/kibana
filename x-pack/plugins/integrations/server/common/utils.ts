@@ -5,5 +5,7 @@
  * 2.0.
  */
 
-export const PLUGIN_ID = 'customIntegrations';
-export const PLUGIN_NAME = 'customIntegrations';
+import { INTEGRATIONS_CRIBL_PACKAGE_NAME } from '../../common/constants';
+
+export const isCriblPackage = (packageName?: string) =>
+  packageName === INTEGRATIONS_CRIBL_PACKAGE_NAME;

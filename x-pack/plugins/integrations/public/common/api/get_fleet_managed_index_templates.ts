@@ -4,6 +4,10 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
+import { HttpSetup } from '@kbn/core/public';
 
-export const PLUGIN_ID = 'customIntegrations';
-export const PLUGIN_NAME = 'customIntegrations';
+export const getFleetManagedIndexTemplates = async (http: HttpSetup): Promise<string[]> => {
+  return await http.get<string[]>('/internal/integrations/fleet_index_templates', {
+    version: '1',
+  });
+};

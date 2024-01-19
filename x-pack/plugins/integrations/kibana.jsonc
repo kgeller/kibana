@@ -9,11 +9,12 @@
     "browser": true,
     "requiredPlugins": [
       "data",
-      "fleet"
+      "fleet",
     ],
     "configPath": [
       "xpack",
       "integrations"
     ],
+    "requiredBundles": ["kibanaReact"]
   }
 }

@@ -5,5 +5,5 @@
  * 2.0.
  */
 
-export const PLUGIN_ID = 'customIntegrations';
-export const PLUGIN_NAME = 'customIntegrations';
+export const INTEGRATIONS_CRIBL_PACKAGE_NAME = 'cribl';
+export const INTEGRATIONS_CRIBL_ROUTING_PIPELINE = 'cribl-routing-pipeline';
