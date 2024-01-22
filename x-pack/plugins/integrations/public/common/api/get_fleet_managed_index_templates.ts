@@ -5,9 +5,39 @@
  * 2.0.
  */
 import { HttpSetup } from '@kbn/core/public';
+import { INTEGRATIONS_FLEET_MANAGED_INDEX_TEMPLATES_PATH } from '../../../common/constants';
 
-export const getFleetManagedIndexTemplates = async (http: HttpSetup): Promise<string[]> => {
-  return await http.get<string[]>('/internal/integrations/fleet_index_templates', {
-    version: '1',
-  });
+export interface TemplateGetResponse {
+  indexTemplates: string[]
+  permissionsError?: boolean
+  generalError?: boolean
+}
+
+export const getFleetManagedIndexTemplates = async (http: HttpSetup): Promise<TemplateGetResponse> => {
+  try {
+    const indexTemplatesGetResponse = await http.get<string[]>
+      (
+        INTEGRATIONS_FLEET_MANAGED_INDEX_TEMPLATES_PATH, 
+        {
+          version: '1',
+        }
+      );
+
+    return {
+      indexTemplates: indexTemplatesGetResponse,
+    };
+  } catch (e) {
+
+    if (e.response?.status === 403) {
+      return {
+        indexTemplates: [],
+        permissionsError: true
+      };
+    }
+
+    return {
+      indexTemplates: [],
+      generalError: true
+    };
+  }
 };

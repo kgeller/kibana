@@ -4,7 +4,6 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-
 import {
   PluginInitializerContext,
   CoreSetup,
@@ -12,11 +11,11 @@ import {
   Plugin,
   Logger,
 } from '@kbn/core/server';
-
 import { CustomIntegrationsPluginSetup, CustomIntegrationsPluginStart, StartPlugins } from './types';
 import { defineRoutes } from './routes';
-import { NewPackagePolicy } from '@kbn/fleet-plugin/common';
+import { NewPackagePolicy, UpdatePackagePolicy } from '@kbn/fleet-plugin/common';
 import { isCriblPackage } from './common/utils';
+import { onPackagePolicyPostCreateOrUpdateCallback } from './cribl/fleet_integration';
 
 export class CustomIntegrationsPlugin
   implements Plugin<CustomIntegrationsPluginSetup, CustomIntegrationsPluginStart>
@@ -38,15 +37,24 @@ export class CustomIntegrationsPlugin
 
   public start(core: CoreStart, plugins: StartPlugins) {
     this.logger.debug('customIntegrations: Started');
-    // TODO register fleet callback
+    const esClient = core.elasticsearch.client.asInternalUser;
+
     plugins.fleet?.registerExternalCallback(
       'packagePolicyCreate',
       async (packagePolicy: NewPackagePolicy): Promise<NewPackagePolicy> => {
         if (isCriblPackage(packagePolicy.package?.name)) {
-          // api call to ingest
+          await onPackagePolicyPostCreateOrUpdateCallback(esClient, packagePolicy, this.logger);
         }
+        return packagePolicy;
+      }
+    );
 
-        console.log(packagePolicy.vars);
+    plugins.fleet?.registerExternalCallback(
+      'packagePolicyUpdate',
+      async (packagePolicy: UpdatePackagePolicy): Promise<UpdatePackagePolicy> => {
+        if (isCriblPackage(packagePolicy.package?.name)) {
+          await onPackagePolicyPostCreateOrUpdateCallback(esClient, packagePolicy, this.logger);
+        }
         return packagePolicy;
       }
     );

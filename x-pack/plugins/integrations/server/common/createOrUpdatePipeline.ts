@@ -15,25 +15,11 @@ export const createOrUpdatePipeline = async (
 ) => {
   const pipelineId = pipelineConf.id;
   try {
-    await esClient.ingest.getPipeline({ id: pipelineId });
-    logger.trace(`pipeline: ${pipelineId} already exists`);
+    await esClient.ingest.putPipeline(pipelineConf);
     return true;
-  } catch (exitErr) {
-    const exitError = transformError(exitErr);
-    if (exitError.statusCode === 404) {
-      try {
-        await esClient.ingest.putPipeline(pipelineConf);
-        logger.trace(`pipeline: ${pipelineId} was created`);
-        return true;
-      } catch (existError) {
-        logger.error(`Failed to create CSP pipeline ${pipelineId}. error: ${existError.message}`);
-        return false;
-      }
-    } else {
-      logger.error(
-        `Failed to check if CSP pipeline ${pipelineId} exists. error: ${exitError.message}`
-      );
-    }
+  } catch (e) {
+    const error = transformError(e);
+    logger.error(`Failed to put Cribl integration pipeline ${pipelineId}. error: ${error.message}`);
   }
   return false;
 };

@@ -8,6 +8,7 @@ import React, { memo, useEffect, useState } from 'react';
 import {
   EuiButton,
   EuiButtonIcon,
+  EuiCallOut,
   EuiComboBox,
   EuiFieldText,
   EuiFlexGroup,
@@ -21,12 +22,31 @@ import { FormattedMessage } from 'react-intl';
 import { getFleetManagedIndexTemplates } from '../common/api/get_fleet_managed_index_templates';
 import { useKibana } from '@kbn/kibana-react-plugin/public';
 import { RouteEntry } from '../../common/types';
+import { getPolicyConfigValueFromRouteEntries, getRouteEntriesFromPolicyConfig } from '../../common/helpers/translator';
 
 const getDefaultRouteEntry = () => {
   return ({
     criblSourceId: "",
     destinationDatastream: ""
   } as RouteEntry);
+};
+
+const hasAtLeastOneValidRouteEntry = (routeEntries: RouteEntry[]) => {
+  return routeEntries
+    .some(re => {
+      const hasCriblSourceId = re.criblSourceId && re.criblSourceId.length > 0;
+      const hasDataStream = re.destinationDatastream && re.destinationDatastream.length > 0;
+      return hasCriblSourceId && hasDataStream;
+    });
+};
+
+const allRouteEntriesArePaired = (routeEntries: RouteEntry[]) => {
+  return routeEntries
+    .every(re => {
+      const hasCriblSourceId = re.criblSourceId && re.criblSourceId.length > 0;
+      const hasDataStream = re.destinationDatastream && re.destinationDatastream.length > 0;
+      return (hasCriblSourceId && hasDataStream) || (!hasCriblSourceId && !hasDataStream);
+    });
 };
 
 interface RouteEntryComponentProps {
@@ -111,21 +131,19 @@ export const CustomCriblExtension = memo<PackagePolicyReplaceDefineStepExtension
   ({ newPolicy, onChange, validationResults, isEditPage }) => {
     const { http } = useKibana().services;
 
-    const [dataStreamOptsError, setDataStreamOptsError] = useState<string>();
+    const [indexTemplatesGetPermissionsError, setindexTemplatesGetPermissionsError] = useState<boolean>();
     const [dataStreamOpts, setDataStreamOpts] = useState<string[]>([]);
-
-    console.log(newPolicy);
     
     useEffect(() => {
       const fetchData = async () => {
-        try {
-          const indexTemplates = await getFleetManagedIndexTemplates(http!);
-          setDataStreamOpts(indexTemplates);
-        } catch (e) {
-          setDataStreamOpts([]);
-          // TODO: pull error message from error??
-          setDataStreamOptsError(e.toString());
+
+        const {indexTemplates, permissionsError} = await getFleetManagedIndexTemplates(http!);
+        setDataStreamOpts(indexTemplates);
+        
+        if (permissionsError) {
+          setindexTemplatesGetPermissionsError(true);
         }
+
       };
       fetchData();
     }, []);
@@ -135,29 +153,30 @@ export const CustomCriblExtension = memo<PackagePolicyReplaceDefineStepExtension
     // Set route entries from initial state
     useEffect(() => {
       if (isEditPage) {
-        // TODO - from package policy
-        const fromApi = [] as RouteEntry[];
-        if (fromApi.length > 0) {
-          setRouteEntries(fromApi);
+        const fromConfig = getRouteEntriesFromPolicyConfig(newPolicy.vars);
+        if (fromConfig.length > 0) {
+          setRouteEntries(fromConfig);
+          return;
         }
-      }
-
+      } 
       const defaultRouteEntries = [
         getDefaultRouteEntry(),
       ]
       setRouteEntries(defaultRouteEntries);
-    }, [])
+    }, []);
 
     const onChangeCriblDataId = (index: number, value: string) => {
       const newValues = [...routeEntries];
       newValues[index].criblSourceId = value;
       setRouteEntries(newValues);
+      updateCriblPolicy(newValues);
     };
 
     const onChangeDatastream = (index: number, value: string) => {
       const newValues = [...routeEntries];
       newValues[index].destinationDatastream = value;
       setRouteEntries(newValues);
+      updateCriblPolicy(newValues);
     };
 
     const onAddEntry = () => {
@@ -166,21 +185,58 @@ export const CustomCriblExtension = memo<PackagePolicyReplaceDefineStepExtension
         getDefaultRouteEntry(),
       ];
       setRouteEntries(newValues);
+      updateCriblPolicy(newValues);
     }
 
     const onDeleteEntry = (index: number) => {
       const newValues = routeEntries.filter((_, idx) => idx !== index);
       setRouteEntries(newValues);
+      updateCriblPolicy(newValues);
+    };
+
+    const updateCriblPolicy = (
+      updatedRouteEntries: RouteEntry[],
+    ) => {
+      const updatedPolicy = {
+        ...newPolicy,
+        vars: {
+          route_entries: {
+            value: getPolicyConfigValueFromRouteEntries(updatedRouteEntries)
+          }
+        }
+      }
+
+      // must have at least one filled in and all entries must have both filled in or neither
+      const isValid = hasAtLeastOneValidRouteEntry(updatedRouteEntries) && allRouteEntriesArePaired(updatedRouteEntries)
+
+      onChange({
+        isValid: isValid,
+        updatedPolicy: updatedPolicy
+      })
     };
 
     return (
       <>
-        {dataStreamOptsError && dataStreamOptsError.length && (
-          // TODO: stylize
+        {indexTemplatesGetPermissionsError && (
+          <>
+              <EuiCallOut
+              size="s"
+              title="Be sure you have the right privileges in order to populate options for datastreams."
+              iconType="help"
+            />
+            <EuiSpacer size="l" />
+            </>
+        )}
+        {/* {!hasAtLeastOneValidRouteEntry(routeEntries) && (
           <div>
-            Error: {}
+            Must have at least one valid
           </div>
         )}
+        {!allRouteEntriesArePaired(routeEntries) && (
+          <div>
+            All route entries must have pairs
+          </div>
+        )} */}
         <EuiFlexGroup>
           <EuiFlexItem>
             <FormattedMessage

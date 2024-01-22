@@ -4,14 +4,25 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-
-import { NewPackagePolicy } from "@kbn/fleet-plugin/common";
+import { PackagePolicyConfigRecord } from "@kbn/fleet-plugin/common";
 import { RouteEntry } from "../types";
 
-// translate from package policy to routeentry[]
-
-export const getRouteEntriesFromPackagePolicy = (policy: NewPackagePolicy): RouteEntry[] => {
-    const policyConfig = policy.vars;
-    console.log(policyConfig);
+export const getRouteEntriesFromPolicyConfig = (policyConfig: PackagePolicyConfigRecord | undefined): RouteEntry[] => {
+  if (policyConfig === undefined) {
     return [];
+  }
+  
+  const entriesString = policyConfig.route_entries.value;
+  if (entriesString && entriesString.length > 0) {
+    let entries: RouteEntry[] = JSON.parse(entriesString);
+    return entries;
+  }
+
+  return [];
+}
+
+export const getPolicyConfigValueFromRouteEntries = (routeEntries: RouteEntry[]): string => {
+  // skip empty config rows
+  var nonEmptyEntries = routeEntries.filter(entry => entry.criblSourceId && entry.destinationDatastream);
+  return JSON.stringify(nonEmptyEntries); 
 }

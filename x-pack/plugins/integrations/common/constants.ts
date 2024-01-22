@@ -7,3 +7,5 @@
 
 export const INTEGRATIONS_CRIBL_PACKAGE_NAME = 'cribl';
 export const INTEGRATIONS_CRIBL_ROUTING_PIPELINE = 'cribl-routing-pipeline';
+
+export const INTEGRATIONS_FLEET_MANAGED_INDEX_TEMPLATES_PATH = '/internal/integrations/fleet_index_templates';

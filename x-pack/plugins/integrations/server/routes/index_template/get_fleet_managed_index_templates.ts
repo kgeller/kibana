@@ -4,14 +4,14 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-
 import type { IRouter } from '@kbn/core/server';
 import { transformError } from '@kbn/securitysolution-es-utils';
+import { INTEGRATIONS_FLEET_MANAGED_INDEX_TEMPLATES_PATH } from '../../../common/constants';
 
 export const defineGetFleetManagedIndexTemplates = (router: IRouter) => {
   router.versioned
     .get({
-      path: '/internal/integrations/fleet_index_templates',
+      path: INTEGRATIONS_FLEET_MANAGED_INDEX_TEMPLATES_PATH,
       access: 'internal',
     })
     .addVersion(

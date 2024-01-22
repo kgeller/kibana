@@ -4,7 +4,6 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-
 import type {
   IngestPutPipelineRequest,
   IngestProcessorContainer,
@@ -17,11 +16,10 @@ import { INTEGRATIONS_CRIBL_ROUTING_PIPELINE } from '../../common/constants';
 export const putCriblRoutingPipeline = async (
   esClient: ElasticsearchClient,
   mappings: RouteEntry[],
-  logger: Logger
+  logger: Logger,
 ) => {
   const pipelineConf = buildPipelineConfiguration(mappings);
-  const pipelineResult = await createOrUpdatePipeline(esClient, pipelineConf, logger);
-  console.log(pipelineResult);
+  await createOrUpdatePipeline(esClient, pipelineConf, logger);
 };
 
 const buildPipelineConfiguration = (mappings: RouteEntry[]): IngestPutPipelineRequest => {
