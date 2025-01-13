@@ -14,7 +14,9 @@ import {
   EuiFlexItem,
   EuiFormRow,
   EuiRadioGroup,
+  EuiSpacer,
   EuiText,
+  EuiTitle,
 } from '@elastic/eui';
 import * as i18n from './translations';
 import type { IntegrationSettings } from '../../../../types';
@@ -22,7 +24,7 @@ import type { IntegrationSettings } from '../../../../types';
 const loadPaths = (integrationSettings: IntegrationSettings | undefined): string[] => {
   const pathObjs = integrationSettings?.apiSpec?.getPaths();
   if (!pathObjs) {
-    throw new Error('Unable to parse path options from OpenAPI spec');
+    return [];
   }
   return Object.keys(pathObjs).filter((path) => pathObjs[path].get);
 };
@@ -33,6 +35,7 @@ interface EndpointSelectionProps {
   selectedPath: string | undefined;
   selectedOtherPath: string | undefined;
   useOtherEndpoint: boolean;
+  isGenerating: boolean;
   onChangeSuggestedPath(id: string): void;
   onChangeOtherPath(path: EuiComboBoxOptionOption[]): void;
 }
@@ -45,6 +48,7 @@ export const EndpointSelection = React.memo<EndpointSelectionProps>(
     selectedOtherPath,
     useOtherEndpoint,
     onChangeSuggestedPath,
+    isGenerating,
     onChangeOtherPath,
   }) => {
     const allPaths = loadPaths(integrationSettings);
@@ -74,32 +78,34 @@ export const EndpointSelection = React.memo<EndpointSelectionProps>(
     );
 
     return (
-      <EuiFlexGroup direction="column" gutterSize="l" data-test-subj="confirmPath">
-        <EuiFlexGroup>
-          <EuiFlexItem>
-            <EuiRadioGroup
-              options={options}
-              idSelected={selectedPath}
-              onChange={onChangeSuggestedPath}
+      <EuiFormRow fullWidth>
+        <EuiFlexItem>
+          <EuiTitle size="xs">
+            <h4>{i18n.CONFIRM_ENDPOINT}</h4>
+          </EuiTitle>
+          <EuiSpacer size="s" />
+          <EuiText size="s">{i18n.CONFIRM_ENDPOINT_DESCRIPTION}</EuiText>
+          <EuiSpacer size="m" />
+          <EuiRadioGroup
+            options={options}
+            idSelected={selectedPath}
+            disabled={isGenerating}
+            onChange={onChangeSuggestedPath}
+          />
+          {useOtherEndpoint && !isShowingAllOptions && (
+            <EuiComboBox
+              singleSelection={{ asPlainText: true }}
+              fullWidth
+              isDisabled={isGenerating}
+              options={otherPathOptions}
+              selectedOptions={
+                selectedOtherPath === undefined ? undefined : [{ label: selectedOtherPath }]
+              }
+              onChange={onChangeOtherPath}
             />
-          </EuiFlexItem>
-        </EuiFlexGroup>
-        {useOtherEndpoint && !isShowingAllOptions && (
-          <EuiFlexGroup direction="column">
-            <EuiFormRow fullWidth>
-              <EuiComboBox
-                singleSelection={{ asPlainText: true }}
-                fullWidth
-                options={otherPathOptions}
-                selectedOptions={
-                  selectedOtherPath === undefined ? undefined : [{ label: selectedOtherPath }]
-                }
-                onChange={onChangeOtherPath}
-              />
-            </EuiFormRow>
-          </EuiFlexGroup>
-        )}
-      </EuiFlexGroup>
+          )}
+        </EuiFlexItem>
+      </EuiFormRow>
     );
   }
 );
