@@ -129,11 +129,11 @@
   ],
   [
     "@kbn/analytics",
-    "packages/kbn-analytics"
+    "src/platform/packages/shared/kbn-analytics"
   ],
   [
     "@kbn/analytics-collection-utils",
-    "packages/analytics/utils/analytics_collection_utils"
+    "src/platform/packages/private/analytics/utils/analytics_collection_utils"
   ],
   [
     "@kbn/analytics-ftr-helpers-plugin",
@@ -145,7 +145,7 @@
   ],
   [
     "@kbn/apm-config-loader",
-    "packages/kbn-apm-config-loader"
+    "src/platform/packages/private/kbn-apm-config-loader"
   ],
   [
     "@kbn/apm-data-access-plugin",
@@ -188,10 +188,6 @@
     "x-pack/test/usage_collection/plugins/application_usage_test"
   ],
   [
-    "@kbn/asset-inventory-plugin",
-    "x-pack/solutions/security/plugins/asset_inventory"
-  ],
-  [
     "@kbn/audit-log-plugin",
     "x-pack/test/security_api_integration/plugins/audit_log"
   ],
@@ -225,11 +221,11 @@
   ],
   [
     "@kbn/calculate-auto",
-    "packages/kbn-calculate-auto"
+    "src/platform/packages/shared/kbn-calculate-auto"
   ],
   [
     "@kbn/calculate-width-from-char-count",
-    "packages/kbn-calculate-width-from-char-count"
+    "src/platform/packages/shared/kbn-calculate-width-from-char-count"
   ],
   [
     "@kbn/canvas-plugin",
@@ -261,19 +257,19 @@
   ],
   [
     "@kbn/chart-expressions-common",
-    "src/plugins/chart_expressions/common"
+    "src/platform/packages/shared/chart-expressions-common"
   ],
   [
     "@kbn/chart-icons",
-    "packages/kbn-chart-icons"
+    "src/platform/packages/shared/kbn-chart-icons"
   ],
   [
     "@kbn/charts-plugin",
-    "src/plugins/charts"
+    "src/platform/plugins/shared/charts"
   ],
   [
     "@kbn/charts-theme",
-    "packages/kbn-charts-theme"
+    "src/platform/packages/shared/kbn-charts-theme"
   ],
   [
     "@kbn/check-mappings-update-cli",
@@ -305,11 +301,11 @@
   ],
   [
     "@kbn/cloud",
-    "packages/cloud"
+    "src/platform/packages/shared/cloud"
   ],
   [
     "@kbn/cloud-chat-plugin",
-    "x-pack/plugins/cloud_integrations/cloud_chat"
+    "x-pack/platform/plugins/private/cloud_integrations/cloud_chat"
   ],
   [
     "@kbn/cloud-data-migration-plugin",
@@ -321,11 +317,11 @@
   ],
   [
     "@kbn/cloud-experiments-plugin",
-    "x-pack/plugins/cloud_integrations/cloud_experiments"
+    "x-pack/platform/plugins/private/cloud_integrations/cloud_experiments"
   ],
   [
     "@kbn/cloud-full-story-plugin",
-    "x-pack/plugins/cloud_integrations/cloud_full_story"
+    "x-pack/platform/plugins/private/cloud_integrations/cloud_full_story"
   ],
   [
     "@kbn/cloud-integration-saml-provider-plugin",
@@ -333,11 +329,11 @@
   ],
   [
     "@kbn/cloud-links-plugin",
-    "x-pack/plugins/cloud_integrations/cloud_links"
+    "x-pack/platform/plugins/private/cloud_integrations/cloud_links"
   ],
   [
     "@kbn/cloud-plugin",
-    "x-pack/plugins/cloud"
+    "x-pack/platform/plugins/shared/cloud"
   ],
   [
     "@kbn/cloud-security-posture",
@@ -357,11 +353,11 @@
   ],
   [
     "@kbn/code-editor",
-    "packages/shared-ux/code_editor/impl"
+    "src/platform/packages/shared/shared-ux/code_editor/impl"
   ],
   [
     "@kbn/code-editor-mock",
-    "packages/shared-ux/code_editor/mocks"
+    "src/platform/packages/shared/shared-ux/code_editor/mocks"
   ],
   [
     "@kbn/code-owners",
@@ -369,19 +365,19 @@
   ],
   [
     "@kbn/coloring",
-    "packages/kbn-coloring"
+    "src/platform/packages/shared/kbn-coloring"
   ],
   [
     "@kbn/config",
-    "packages/kbn-config"
+    "src/platform/packages/shared/kbn-config"
   ],
   [
     "@kbn/config-mocks",
-    "packages/kbn-config-mocks"
+    "src/platform/packages/private/kbn-config-mocks"
   ],
   [
     "@kbn/config-schema",
-    "packages/kbn-config-schema"
+    "src/platform/packages/shared/kbn-config-schema"
   ],
   [
     "@kbn/console-plugin",
@@ -389,15 +385,15 @@
   ],
   [
     "@kbn/content-management-content-editor",
-    "packages/content-management/content_editor"
+    "src/platform/packages/shared/content-management/content_editor"
   ],
   [
     "@kbn/content-management-content-insights-public",
-    "packages/content-management/content_insights/content_insights_public"
+    "src/platform/packages/shared/content-management/content_insights/content_insights_public"
   ],
   [
     "@kbn/content-management-content-insights-server",
-    "packages/content-management/content_insights/content_insights_server"
+    "src/platform/packages/shared/content-management/content_insights/content_insights_server"
   ],
   [
     "@kbn/content-management-examples-plugin",
@@ -405,15 +401,15 @@
   ],
   [
     "@kbn/content-management-favorites-common",
-    "packages/content-management/favorites/favorites_common"
+    "src/platform/packages/shared/content-management/favorites/favorites_common"
   ],
   [
     "@kbn/content-management-favorites-public",
-    "packages/content-management/favorites/favorites_public"
+    "src/platform/packages/shared/content-management/favorites/favorites_public"
   ],
   [
     "@kbn/content-management-favorites-server",
-    "packages/content-management/favorites/favorites_server"
+    "src/platform/packages/shared/content-management/favorites/favorites_server"
   ],
   [
     "@kbn/content-management-plugin",
@@ -421,23 +417,23 @@
   ],
   [
     "@kbn/content-management-tabbed-table-list-view",
-    "packages/content-management/tabbed_table_list_view"
+    "src/platform/packages/shared/content-management/tabbed_table_list_view"
   ],
   [
     "@kbn/content-management-table-list-view",
-    "packages/content-management/table_list_view"
+    "src/platform/packages/shared/content-management/table_list_view"
   ],
   [
     "@kbn/content-management-table-list-view-common",
-    "packages/content-management/table_list_view_common"
+    "src/platform/packages/shared/content-management/table_list_view_common"
   ],
   [
     "@kbn/content-management-table-list-view-table",
-    "packages/content-management/table_list_view_table"
+    "src/platform/packages/shared/content-management/table_list_view_table"
   ],
   [
     "@kbn/content-management-user-profiles",
-    "packages/content-management/user_profiles"
+    "src/platform/packages/shared/content-management/user_profiles"
   ],
   [
     "@kbn/content-management-utils",
@@ -525,11 +521,11 @@
   ],
   [
     "@kbn/core-base-common-internal",
-    "packages/core/base/core-base-common-internal"
+    "src/core/packages/base/common-internal"
   ],
   [
     "@kbn/core-base-server-internal",
-    "packages/core/base/core-base-server-internal"
+    "src/core/packages/base/server-internal"
   ],
   [
     "@kbn/core-base-server-mocks",
@@ -537,7 +533,7 @@
   ],
   [
     "@kbn/core-capabilities-browser-internal",
-    "packages/core/capabilities/core-capabilities-browser-internal"
+    "src/core/packages/capabilities/browser-internal"
   ],
   [
     "@kbn/core-capabilities-browser-mocks",
@@ -545,15 +541,15 @@
   ],
   [
     "@kbn/core-capabilities-common",
-    "packages/core/capabilities/core-capabilities-common"
+    "src/core/packages/capabilities/common"
   ],
   [
     "@kbn/core-capabilities-server",
-    "packages/core/capabilities/core-capabilities-server"
+    "src/core/packages/capabilities/server"
   ],
   [
     "@kbn/core-capabilities-server-internal",
-    "packages/core/capabilities/core-capabilities-server-internal"
+    "src/core/packages/capabilities/server-internal"
   ],
   [
     "@kbn/core-capabilities-server-mocks",
@@ -561,11 +557,11 @@
   ],
   [
     "@kbn/core-chrome-browser",
-    "packages/core/chrome/core-chrome-browser"
+    "src/core/packages/chrome/browser"
   ],
   [
     "@kbn/core-chrome-browser-internal",
-    "packages/core/chrome/core-chrome-browser-internal"
+    "src/core/packages/chrome/browser-internal"
   ],
   [
     "@kbn/core-chrome-browser-mocks",
@@ -573,43 +569,43 @@
   ],
   [
     "@kbn/core-config-server-internal",
-    "packages/core/config/core-config-server-internal"
+    "src/core/packages/config/server-internal"
   ],
   [
     "@kbn/core-custom-branding-browser",
-    "packages/core/custom-branding/core-custom-branding-browser"
+    "src/core/packages/custom-branding/browser"
   ],
   [
     "@kbn/core-custom-branding-browser-internal",
-    "packages/core/custom-branding/core-custom-branding-browser-internal"
+    "src/core/packages/custom-branding/browser-internal"
   ],
   [
     "@kbn/core-custom-branding-browser-mocks",
-    "packages/core/custom-branding/core-custom-branding-browser-mocks"
+    "src/core/packages/custom-branding/browser-mocks"
   ],
   [
     "@kbn/core-custom-branding-common",
-    "packages/core/custom-branding/core-custom-branding-common"
+    "src/core/packages/custom-branding/common"
   ],
   [
     "@kbn/core-custom-branding-server",
-    "packages/core/custom-branding/core-custom-branding-server"
+    "src/core/packages/custom-branding/server"
   ],
   [
     "@kbn/core-custom-branding-server-internal",
-    "packages/core/custom-branding/core-custom-branding-server-internal"
+    "src/core/packages/custom-branding/server-internal"
   ],
   [
     "@kbn/core-custom-branding-server-mocks",
-    "packages/core/custom-branding/core-custom-branding-server-mocks"
+    "src/core/packages/custom-branding/server-mocks"
   ],
   [
     "@kbn/core-deprecations-browser",
-    "packages/core/deprecations/core-deprecations-browser"
+    "src/core/packages/deprecations/browser"
   ],
   [
     "@kbn/core-deprecations-browser-internal",
-    "packages/core/deprecations/core-deprecations-browser-internal"
+    "src/core/packages/deprecations/browser-internal"
   ],
   [
     "@kbn/core-deprecations-browser-mocks",
@@ -617,15 +613,15 @@
   ],
   [
     "@kbn/core-deprecations-common",
-    "packages/core/deprecations/core-deprecations-common"
+    "src/core/packages/deprecations/common"
   ],
   [
     "@kbn/core-deprecations-server",
-    "packages/core/deprecations/core-deprecations-server"
+    "src/core/packages/deprecations/server"
   ],
   [
     "@kbn/core-deprecations-server-internal",
-    "packages/core/deprecations/core-deprecations-server-internal"
+    "src/core/packages/deprecations/server-internal"
   ],
   [
     "@kbn/core-deprecations-server-mocks",
@@ -633,11 +629,11 @@
   ],
   [
     "@kbn/core-doc-links-browser",
-    "packages/core/doc-links/core-doc-links-browser"
+    "src/core/packages/doc-links/browser"
   ],
   [
     "@kbn/core-doc-links-browser-internal",
-    "packages/core/doc-links/core-doc-links-browser-internal"
+    "src/core/packages/doc-links/browser-internal"
   ],
   [
     "@kbn/core-doc-links-browser-mocks",
@@ -645,11 +641,11 @@
   ],
   [
     "@kbn/core-doc-links-server",
-    "packages/core/doc-links/core-doc-links-server"
+    "src/core/packages/doc-links/server"
   ],
   [
     "@kbn/core-doc-links-server-internal",
-    "packages/core/doc-links/core-doc-links-server-internal"
+    "src/core/packages/doc-links/server-internal"
   ],
   [
     "@kbn/core-doc-links-server-mocks",
@@ -657,7 +653,7 @@
   ],
   [
     "@kbn/core-elasticsearch-client-server-internal",
-    "packages/core/elasticsearch/core-elasticsearch-client-server-internal"
+    "src/core/packages/elasticsearch/client-server-internal"
   ],
   [
     "@kbn/core-elasticsearch-client-server-mocks",
@@ -665,11 +661,11 @@
   ],
   [
     "@kbn/core-elasticsearch-server",
-    "packages/core/elasticsearch/core-elasticsearch-server"
+    "src/core/packages/elasticsearch/server"
   ],
   [
     "@kbn/core-elasticsearch-server-internal",
-    "packages/core/elasticsearch/core-elasticsearch-server-internal"
+    "src/core/packages/elasticsearch/server-internal"
   ],
   [
     "@kbn/core-elasticsearch-server-mocks",
@@ -677,7 +673,7 @@
   ],
   [
     "@kbn/core-environment-server-internal",
-    "packages/core/environment/core-environment-server-internal"
+    "src/core/packages/environment/server-internal"
   ],
   [
     "@kbn/core-environment-server-mocks",
@@ -685,11 +681,11 @@
   ],
   [
     "@kbn/core-execution-context-browser",
-    "packages/core/execution-context/core-execution-context-browser"
+    "src/core/packages/execution-context/browser"
   ],
   [
     "@kbn/core-execution-context-browser-internal",
-    "packages/core/execution-context/core-execution-context-browser-internal"
+    "src/core/packages/execution-context/browser-internal"
   ],
   [
     "@kbn/core-execution-context-browser-mocks",
@@ -697,15 +693,15 @@
   ],
   [
     "@kbn/core-execution-context-common",
-    "packages/core/execution-context/core-execution-context-common"
+    "src/core/packages/execution-context/common"
   ],
   [
     "@kbn/core-execution-context-server",
-    "packages/core/execution-context/core-execution-context-server"
+    "src/core/packages/execution-context/server"
   ],
   [
     "@kbn/core-execution-context-server-internal",
-    "packages/core/execution-context/core-execution-context-server-internal"
+    "src/core/packages/execution-context/server-internal"
   ],
   [
     "@kbn/core-execution-context-server-mocks",
@@ -713,11 +709,11 @@
   ],
   [
     "@kbn/core-fatal-errors-browser",
-    "packages/core/fatal-errors/core-fatal-errors-browser"
+    "src/core/packages/fatal-errors/browser"
   ],
   [
     "@kbn/core-fatal-errors-browser-internal",
-    "packages/core/fatal-errors/core-fatal-errors-browser-internal"
+    "src/core/packages/fatal-errors/browser-internal"
   ],
   [
     "@kbn/core-fatal-errors-browser-mocks",
@@ -725,27 +721,27 @@
   ],
   [
     "@kbn/core-feature-flags-browser",
-    "packages/core/feature-flags/core-feature-flags-browser"
+    "src/core/packages/feature-flags/browser"
   ],
   [
     "@kbn/core-feature-flags-browser-internal",
-    "packages/core/feature-flags/core-feature-flags-browser-internal"
+    "src/core/packages/feature-flags/browser-internal"
   ],
   [
     "@kbn/core-feature-flags-browser-mocks",
-    "packages/core/feature-flags/core-feature-flags-browser-mocks"
+    "src/core/packages/feature-flags/browser-mocks"
   ],
   [
     "@kbn/core-feature-flags-server",
-    "packages/core/feature-flags/core-feature-flags-server"
+    "src/core/packages/feature-flags/server"
   ],
   [
     "@kbn/core-feature-flags-server-internal",
-    "packages/core/feature-flags/core-feature-flags-server-internal"
+    "src/core/packages/feature-flags/server-internal"
   ],
   [
     "@kbn/core-feature-flags-server-mocks",
-    "packages/core/feature-flags/core-feature-flags-server-mocks"
+    "src/core/packages/feature-flags/server-mocks"
   ],
   [
     "@kbn/core-history-block-plugin",
@@ -753,11 +749,11 @@
   ],
   [
     "@kbn/core-http-browser",
-    "packages/core/http/core-http-browser"
+    "src/core/packages/http/browser"
   ],
   [
     "@kbn/core-http-browser-internal",
-    "packages/core/http/core-http-browser-internal"
+    "src/core/packages/http/browser-internal"
   ],
   [
     "@kbn/core-http-browser-mocks",
@@ -765,11 +761,11 @@
   ],
   [
     "@kbn/core-http-common",
-    "packages/core/http/core-http-common"
+    "src/core/packages/http/common"
   ],
   [
     "@kbn/core-http-context-server-internal",
-    "packages/core/http/core-http-context-server-internal"
+    "src/core/packages/http/context-server-internal"
   ],
   [
     "@kbn/core-http-context-server-mocks",
@@ -781,19 +777,19 @@
   ],
   [
     "@kbn/core-http-request-handler-context-server",
-    "packages/core/http/core-http-request-handler-context-server"
+    "src/core/packages/http/request-handler-context-server"
   ],
   [
     "@kbn/core-http-request-handler-context-server-internal",
-    "packages/core/http/core-http-request-handler-context-server-internal"
+    "src/core/packages/http/request-handler-context-server-internal"
   ],
   [
     "@kbn/core-http-resources-server",
-    "packages/core/http/core-http-resources-server"
+    "src/core/packages/http/resources-server"
   ],
   [
     "@kbn/core-http-resources-server-internal",
-    "packages/core/http/core-http-resources-server-internal"
+    "src/core/packages/http/resources-server-internal"
   ],
   [
     "@kbn/core-http-resources-server-mocks",
@@ -801,7 +797,7 @@
   ],
   [
     "@kbn/core-http-router-server-internal",
-    "packages/core/http/core-http-router-server-internal"
+    "src/core/packages/http/router-server-internal"
   ],
   [
     "@kbn/core-http-router-server-mocks",
@@ -809,11 +805,11 @@
   ],
   [
     "@kbn/core-http-server",
-    "packages/core/http/core-http-server"
+    "src/core/packages/http/server"
   ],
   [
     "@kbn/core-http-server-internal",
-    "packages/core/http/core-http-server-internal"
+    "src/core/packages/http/server-internal"
   ],
   [
     "@kbn/core-http-server-mocks",
@@ -821,15 +817,15 @@
   ],
   [
     "@kbn/core-http-server-utils",
-    "packages/core/http/core-http-server-utils"
+    "src/core/packages/http/server-utils"
   ],
   [
     "@kbn/core-i18n-browser",
-    "packages/core/i18n/core-i18n-browser"
+    "src/core/packages/i18n/browser"
   ],
   [
     "@kbn/core-i18n-browser-internal",
-    "packages/core/i18n/core-i18n-browser-internal"
+    "src/core/packages/i18n/browser-internal"
   ],
   [
     "@kbn/core-i18n-browser-mocks",
@@ -837,11 +833,11 @@
   ],
   [
     "@kbn/core-i18n-server",
-    "packages/core/i18n/core-i18n-server"
+    "src/core/packages/i18n/server"
   ],
   [
     "@kbn/core-i18n-server-internal",
-    "packages/core/i18n/core-i18n-server-internal"
+    "src/core/packages/i18n/server-internal"
   ],
   [
     "@kbn/core-i18n-server-mocks",
@@ -849,7 +845,7 @@
   ],
   [
     "@kbn/core-injected-metadata-browser-internal",
-    "packages/core/injected-metadata/core-injected-metadata-browser-internal"
+    "src/core/packages/injected-metadata/browser-internal"
   ],
   [
     "@kbn/core-injected-metadata-browser-mocks",
@@ -857,11 +853,11 @@
   ],
   [
     "@kbn/core-injected-metadata-common-internal",
-    "packages/core/injected-metadata/core-injected-metadata-common-internal"
+    "src/core/packages/injected-metadata/common-internal"
   ],
   [
     "@kbn/core-integrations-browser-internal",
-    "packages/core/integrations/core-integrations-browser-internal"
+    "src/core/packages/integrations/browser-internal"
   ],
   [
     "@kbn/core-integrations-browser-mocks",
@@ -869,11 +865,11 @@
   ],
   [
     "@kbn/core-lifecycle-browser",
-    "packages/core/lifecycle/core-lifecycle-browser"
+    "src/core/packages/lifecycle/browser"
   ],
   [
     "@kbn/core-lifecycle-browser-internal",
-    "packages/core/lifecycle/core-lifecycle-browser-internal"
+    "src/core/packages/lifecycle/browser-internal"
   ],
   [
     "@kbn/core-lifecycle-browser-mocks",
@@ -881,11 +877,11 @@
   ],
   [
     "@kbn/core-lifecycle-server",
-    "packages/core/lifecycle/core-lifecycle-server"
+    "src/core/packages/lifecycle/server"
   ],
   [
     "@kbn/core-lifecycle-server-internal",
-    "packages/core/lifecycle/core-lifecycle-server-internal"
+    "src/core/packages/lifecycle/server-internal"
   ],
   [
     "@kbn/core-lifecycle-server-mocks",
@@ -893,7 +889,7 @@
   ],
   [
     "@kbn/core-logging-browser-internal",
-    "packages/core/logging/core-logging-browser-internal"
+    "src/core/packages/logging/browser-internal"
   ],
   [
     "@kbn/core-logging-browser-mocks",
@@ -901,15 +897,15 @@
   ],
   [
     "@kbn/core-logging-common-internal",
-    "packages/core/logging/core-logging-common-internal"
+    "src/core/packages/logging/common-internal"
   ],
   [
     "@kbn/core-logging-server",
-    "packages/core/logging/core-logging-server"
+    "src/core/packages/logging/server"
   ],
   [
     "@kbn/core-logging-server-internal",
-    "packages/core/logging/core-logging-server-internal"
+    "src/core/packages/logging/server-internal"
   ],
   [
     "@kbn/core-logging-server-mocks",
@@ -917,7 +913,7 @@
   ],
   [
     "@kbn/core-metrics-collectors-server-internal",
-    "packages/core/metrics/core-metrics-collectors-server-internal"
+    "src/core/packages/metrics/collectors-server-internal"
   ],
   [
     "@kbn/core-metrics-collectors-server-mocks",
@@ -925,11 +921,11 @@
   ],
   [
     "@kbn/core-metrics-server",
-    "packages/core/metrics/core-metrics-server"
+    "src/core/packages/metrics/server"
   ],
   [
     "@kbn/core-metrics-server-internal",
-    "packages/core/metrics/core-metrics-server-internal"
+    "src/core/packages/metrics/server-internal"
   ],
   [
     "@kbn/core-metrics-server-mocks",
@@ -937,19 +933,19 @@
   ],
   [
     "@kbn/core-mount-utils-browser",
-    "packages/core/mount-utils/core-mount-utils-browser"
+    "src/core/packages/mount-utils/browser"
   ],
   [
     "@kbn/core-mount-utils-browser-internal",
-    "packages/core/mount-utils/core-mount-utils-browser-internal"
+    "src/core/packages/mount-utils/browser-internal"
   ],
   [
     "@kbn/core-node-server",
-    "packages/core/node/core-node-server"
+    "src/core/packages/node/server"
   ],
   [
     "@kbn/core-node-server-internal",
-    "packages/core/node/core-node-server-internal"
+    "src/core/packages/node/server-internal"
   ],
   [
     "@kbn/core-node-server-mocks",
@@ -957,11 +953,11 @@
   ],
   [
     "@kbn/core-notifications-browser",
-    "packages/core/notifications/core-notifications-browser"
+    "src/core/packages/notifications/browser"
   ],
   [
     "@kbn/core-notifications-browser-internal",
-    "packages/core/notifications/core-notifications-browser-internal"
+    "src/core/packages/notifications/browser-internal"
   ],
   [
     "@kbn/core-notifications-browser-mocks",
@@ -969,11 +965,11 @@
   ],
   [
     "@kbn/core-overlays-browser",
-    "packages/core/overlays/core-overlays-browser"
+    "src/core/packages/overlays/browser"
   ],
   [
     "@kbn/core-overlays-browser-internal",
-    "packages/core/overlays/core-overlays-browser-internal"
+    "src/core/packages/overlays/browser-internal"
   ],
   [
     "@kbn/core-overlays-browser-mocks",
@@ -1033,15 +1029,15 @@
   ],
   [
     "@kbn/core-plugins-base-server-internal",
-    "packages/core/plugins/core-plugins-base-server-internal"
+    "src/core/packages/plugins/base-server-internal"
   ],
   [
     "@kbn/core-plugins-browser",
-    "packages/core/plugins/core-plugins-browser"
+    "src/core/packages/plugins/browser"
   ],
   [
     "@kbn/core-plugins-browser-internal",
-    "packages/core/plugins/core-plugins-browser-internal"
+    "src/core/packages/plugins/browser-internal"
   ],
   [
     "@kbn/core-plugins-browser-mocks",
@@ -1049,19 +1045,19 @@
   ],
   [
     "@kbn/core-plugins-contracts-browser",
-    "packages/core/plugins/core-plugins-contracts-browser"
+    "src/core/packages/plugins/contracts-browser"
   ],
   [
     "@kbn/core-plugins-contracts-server",
-    "packages/core/plugins/core-plugins-contracts-server"
+    "src/core/packages/plugins/contracts-server"
   ],
   [
     "@kbn/core-plugins-server",
-    "packages/core/plugins/core-plugins-server"
+    "src/core/packages/plugins/server"
   ],
   [
     "@kbn/core-plugins-server-internal",
-    "packages/core/plugins/core-plugins-server-internal"
+    "src/core/packages/plugins/server-internal"
   ],
   [
     "@kbn/core-plugins-server-mocks",
@@ -1069,11 +1065,11 @@
   ],
   [
     "@kbn/core-preboot-server",
-    "packages/core/preboot/core-preboot-server"
+    "src/core/packages/preboot/server"
   ],
   [
     "@kbn/core-preboot-server-internal",
-    "packages/core/preboot/core-preboot-server-internal"
+    "src/core/packages/preboot/server-internal"
   ],
   [
     "@kbn/core-preboot-server-mocks",
@@ -1085,11 +1081,11 @@
   ],
   [
     "@kbn/core-rendering-browser",
-    "packages/core/rendering/core-rendering-browser"
+    "src/core/packages/rendering/browser"
   ],
   [
     "@kbn/core-rendering-browser-internal",
-    "packages/core/rendering/core-rendering-browser-internal"
+    "src/core/packages/rendering/browser-internal"
   ],
   [
     "@kbn/core-rendering-browser-mocks",
@@ -1097,7 +1093,7 @@
   ],
   [
     "@kbn/core-rendering-server-internal",
-    "packages/core/rendering/core-rendering-server-internal"
+    "src/core/packages/rendering/server-internal"
   ],
   [
     "@kbn/core-rendering-server-mocks",
@@ -1105,23 +1101,23 @@
   ],
   [
     "@kbn/core-root-browser-internal",
-    "packages/core/root/core-root-browser-internal"
+    "src/core/packages/root/browser-internal"
   ],
   [
     "@kbn/core-root-server-internal",
-    "packages/core/root/core-root-server-internal"
+    "src/core/packages/root/server-internal"
   ],
   [
     "@kbn/core-saved-objects-api-browser",
-    "packages/core/saved-objects/core-saved-objects-api-browser"
+    "src/core/packages/saved-objects/api-browser"
   ],
   [
     "@kbn/core-saved-objects-api-server",
-    "packages/core/saved-objects/core-saved-objects-api-server"
+    "src/core/packages/saved-objects/api-server"
   ],
   [
     "@kbn/core-saved-objects-api-server-internal",
-    "packages/core/saved-objects/core-saved-objects-api-server-internal"
+    "src/core/packages/saved-objects/api-server-internal"
   ],
   [
     "@kbn/core-saved-objects-api-server-mocks",
@@ -1129,7 +1125,7 @@
   ],
   [
     "@kbn/core-saved-objects-base-server-internal",
-    "packages/core/saved-objects/core-saved-objects-base-server-internal"
+    "src/core/packages/saved-objects/base-server-internal"
   ],
   [
     "@kbn/core-saved-objects-base-server-mocks",
@@ -1137,11 +1133,11 @@
   ],
   [
     "@kbn/core-saved-objects-browser",
-    "packages/core/saved-objects/core-saved-objects-browser"
+    "src/core/packages/saved-objects/browser"
   ],
   [
     "@kbn/core-saved-objects-browser-internal",
-    "packages/core/saved-objects/core-saved-objects-browser-internal"
+    "src/core/packages/saved-objects/browser-internal"
   ],
   [
     "@kbn/core-saved-objects-browser-mocks",
@@ -1149,11 +1145,11 @@
   ],
   [
     "@kbn/core-saved-objects-common",
-    "packages/core/saved-objects/core-saved-objects-common"
+    "src/core/packages/saved-objects/common"
   ],
   [
     "@kbn/core-saved-objects-import-export-server-internal",
-    "packages/core/saved-objects/core-saved-objects-import-export-server-internal"
+    "src/core/packages/saved-objects/import-export-server-internal"
   ],
   [
     "@kbn/core-saved-objects-import-export-server-mocks",
@@ -1161,7 +1157,7 @@
   ],
   [
     "@kbn/core-saved-objects-migration-server-internal",
-    "packages/core/saved-objects/core-saved-objects-migration-server-internal"
+    "src/core/packages/saved-objects/migration-server-internal"
   ],
   [
     "@kbn/core-saved-objects-migration-server-mocks",
@@ -1169,11 +1165,11 @@
   ],
   [
     "@kbn/core-saved-objects-server",
-    "packages/core/saved-objects/core-saved-objects-server"
+    "src/core/packages/saved-objects/server"
   ],
   [
     "@kbn/core-saved-objects-server-internal",
-    "packages/core/saved-objects/core-saved-objects-server-internal"
+    "src/core/packages/saved-objects/server-internal"
   ],
   [
     "@kbn/core-saved-objects-server-mocks",
@@ -1181,47 +1177,47 @@
   ],
   [
     "@kbn/core-saved-objects-utils-server",
-    "packages/core/saved-objects/core-saved-objects-utils-server"
+    "src/core/packages/saved-objects/utils-server"
   ],
   [
     "@kbn/core-security-browser",
-    "packages/core/security/core-security-browser"
+    "src/core/packages/security/browser"
   ],
   [
     "@kbn/core-security-browser-internal",
-    "packages/core/security/core-security-browser-internal"
+    "src/core/packages/security/browser-internal"
   ],
   [
     "@kbn/core-security-browser-mocks",
-    "packages/core/security/core-security-browser-mocks"
+    "src/core/packages/security/browser-mocks"
   ],
   [
     "@kbn/core-security-common",
-    "packages/core/security/core-security-common"
+    "src/core/packages/security/common"
   ],
   [
     "@kbn/core-security-server",
-    "packages/core/security/core-security-server"
+    "src/core/packages/security/server"
   ],
   [
     "@kbn/core-security-server-internal",
-    "packages/core/security/core-security-server-internal"
+    "src/core/packages/security/server-internal"
   ],
   [
     "@kbn/core-security-server-mocks",
-    "packages/core/security/core-security-server-mocks"
+    "src/core/packages/security/server-mocks"
   ],
   [
     "@kbn/core-status-common",
-    "packages/core/status/core-status-common"
+    "src/core/packages/status/common"
   ],
   [
     "@kbn/core-status-server",
-    "packages/core/status/core-status-server"
+    "src/core/packages/status/server"
   ],
   [
     "@kbn/core-status-server-internal",
-    "packages/core/status/core-status-server-internal"
+    "src/core/packages/status/server-internal"
   ],
   [
     "@kbn/core-status-server-mocks",
@@ -1229,11 +1225,11 @@
   ],
   [
     "@kbn/core-test-helpers-deprecations-getters",
-    "packages/core/test-helpers/core-test-helpers-deprecations-getters"
+    "src/core/packages/test-helpers/deprecations-getters"
   ],
   [
     "@kbn/core-test-helpers-http-setup-browser",
-    "packages/core/test-helpers/core-test-helpers-http-setup-browser"
+    "src/core/packages/test-helpers/http-setup-browser"
   ],
   [
     "@kbn/core-test-helpers-kbn-server",
@@ -1245,19 +1241,19 @@
   ],
   [
     "@kbn/core-test-helpers-so-type-serializer",
-    "packages/core/test-helpers/core-test-helpers-so-type-serializer"
+    "src/core/packages/test-helpers/so-type-serializer"
   ],
   [
     "@kbn/core-test-helpers-test-utils",
-    "packages/core/test-helpers/core-test-helpers-test-utils"
+    "src/core/packages/test-helpers/test-utils"
   ],
   [
     "@kbn/core-theme-browser",
-    "packages/core/theme/core-theme-browser"
+    "src/core/packages/theme/browser"
   ],
   [
     "@kbn/core-theme-browser-internal",
-    "packages/core/theme/core-theme-browser-internal"
+    "src/core/packages/theme/browser-internal"
   ],
   [
     "@kbn/core-theme-browser-mocks",
@@ -1265,11 +1261,11 @@
   ],
   [
     "@kbn/core-ui-settings-browser",
-    "packages/core/ui-settings/core-ui-settings-browser"
+    "src/core/packages/ui-settings/browser"
   ],
   [
     "@kbn/core-ui-settings-browser-internal",
-    "packages/core/ui-settings/core-ui-settings-browser-internal"
+    "src/core/packages/ui-settings/browser-internal"
   ],
   [
     "@kbn/core-ui-settings-browser-mocks",
@@ -1277,15 +1273,15 @@
   ],
   [
     "@kbn/core-ui-settings-common",
-    "packages/core/ui-settings/core-ui-settings-common"
+    "src/core/packages/ui-settings/common"
   ],
   [
     "@kbn/core-ui-settings-server",
-    "packages/core/ui-settings/core-ui-settings-server"
+    "src/core/packages/ui-settings/server"
   ],
   [
     "@kbn/core-ui-settings-server-internal",
-    "packages/core/ui-settings/core-ui-settings-server-internal"
+    "src/core/packages/ui-settings/server-internal"
   ],
   [
     "@kbn/core-ui-settings-server-mocks",
@@ -1293,15 +1289,15 @@
   ],
   [
     "@kbn/core-usage-data-base-server-internal",
-    "packages/core/usage-data/core-usage-data-base-server-internal"
+    "src/core/packages/usage-data/base-server-internal"
   ],
   [
     "@kbn/core-usage-data-server",
-    "packages/core/usage-data/core-usage-data-server"
+    "src/core/packages/usage-data/server"
   ],
   [
     "@kbn/core-usage-data-server-internal",
-    "packages/core/usage-data/core-usage-data-server-internal"
+    "src/core/packages/usage-data/server-internal"
   ],
   [
     "@kbn/core-usage-data-server-mocks",
@@ -1309,43 +1305,43 @@
   ],
   [
     "@kbn/core-user-profile-browser",
-    "packages/core/user-profile/core-user-profile-browser"
+    "src/core/packages/user-profile/browser"
   ],
   [
     "@kbn/core-user-profile-browser-internal",
-    "packages/core/user-profile/core-user-profile-browser-internal"
+    "src/core/packages/user-profile/browser-internal"
   ],
   [
     "@kbn/core-user-profile-browser-mocks",
-    "packages/core/user-profile/core-user-profile-browser-mocks"
+    "src/core/packages/user-profile/browser-mocks"
   ],
   [
     "@kbn/core-user-profile-common",
-    "packages/core/user-profile/core-user-profile-common"
+    "src/core/packages/user-profile/common"
   ],
   [
     "@kbn/core-user-profile-server",
-    "packages/core/user-profile/core-user-profile-server"
+    "src/core/packages/user-profile/server"
   ],
   [
     "@kbn/core-user-profile-server-internal",
-    "packages/core/user-profile/core-user-profile-server-internal"
+    "src/core/packages/user-profile/server-internal"
   ],
   [
     "@kbn/core-user-profile-server-mocks",
-    "packages/core/user-profile/core-user-profile-server-mocks"
+    "src/core/packages/user-profile/server-mocks"
   ],
   [
     "@kbn/core-user-settings-server",
-    "packages/core/user-settings/core-user-settings-server"
+    "src/core/packages/user-settings/server"
   ],
   [
     "@kbn/core-user-settings-server-internal",
-    "packages/core/user-settings/core-user-settings-server-internal"
+    "src/core/packages/user-settings/server-internal"
   ],
   [
     "@kbn/core-user-settings-server-mocks",
-    "packages/core/user-settings/core-user-settings-server-mocks"
+    "src/core/packages/user-settings/server-mocks"
   ],
   [
     "@kbn/cross-cluster-replication-plugin",
@@ -1353,11 +1349,11 @@
   ],
   [
     "@kbn/crypto",
-    "packages/kbn-crypto"
+    "src/platform/packages/shared/kbn-crypto"
   ],
   [
     "@kbn/crypto-browser",
-    "packages/kbn-crypto-browser"
+    "src/platform/packages/shared/kbn-crypto-browser"
   ],
   [
     "@kbn/custom-branding-plugin",
@@ -1393,7 +1389,7 @@
   ],
   [
     "@kbn/data-plugin",
-    "src/plugins/data"
+    "src/platform/plugins/shared/data"
   ],
   [
     "@kbn/data-quality-plugin",
@@ -1405,7 +1401,7 @@
   ],
   [
     "@kbn/data-service",
-    "packages/kbn-data-service"
+    "src/platform/packages/shared/kbn-data-service"
   ],
   [
     "@kbn/data-stream-adapter",
@@ -1485,7 +1481,7 @@
   ],
   [
     "@kbn/deeplinks-shared",
-    "packages/deeplinks/shared"
+    "src/platform/packages/shared/deeplinks/shared"
   ],
   [
     "@kbn/default-nav-analytics",
@@ -1569,11 +1565,11 @@
   ],
   [
     "@kbn/dom-drag-drop",
-    "packages/kbn-dom-drag-drop"
+    "src/platform/packages/shared/kbn-dom-drag-drop"
   ],
   [
     "@kbn/ebt-tools",
-    "packages/kbn-ebt-tools"
+    "src/platform/packages/shared/kbn-ebt-tools"
   ],
   [
     "@kbn/ecs-data-quality-dashboard",
@@ -1625,7 +1621,7 @@
   ],
   [
     "@kbn/encrypted-saved-objects-plugin",
-    "x-pack/plugins/encrypted_saved_objects"
+    "x-pack/platform/plugins/shared/encrypted_saved_objects"
   ],
   [
     "@kbn/enterprise-search-plugin",
@@ -1633,7 +1629,7 @@
   ],
   [
     "@kbn/entities-data-access-plugin",
-    "x-pack/solutions/observability/plugins/observability_solution/entities_data_access"
+    "x-pack/solutions/observability/plugins/entities_data_access"
   ],
   [
     "@kbn/entities-schema",
@@ -1645,7 +1641,7 @@
   ],
   [
     "@kbn/entityManager-app-plugin",
-    "x-pack/solutions/observability/plugins/observability_solution/entity_manager_app"
+    "x-pack/solutions/observability/plugins/entity_manager_app"
   ],
   [
     "@kbn/entityManager-plugin",
@@ -1665,7 +1661,7 @@
   ],
   [
     "@kbn/es-errors",
-    "packages/kbn-es-errors"
+    "src/platform/packages/shared/kbn-es-errors"
   ],
   [
     "@kbn/es-query",
@@ -1673,7 +1669,7 @@
   ],
   [
     "@kbn/es-types",
-    "packages/kbn-es-types"
+    "src/platform/packages/shared/kbn-es-types"
   ],
   [
     "@kbn/es-ui-shared-plugin",
@@ -1753,19 +1749,19 @@
   ],
   [
     "@kbn/event-annotation-common",
-    "packages/kbn-event-annotation-common"
+    "src/platform/packages/shared/kbn-event-annotation-common"
   ],
   [
     "@kbn/event-annotation-components",
-    "packages/kbn-event-annotation-components"
+    "src/platform/packages/shared/kbn-event-annotation-components"
   ],
   [
     "@kbn/event-annotation-listing-plugin",
-    "src/plugins/event_annotation_listing"
+    "src/platform/plugins/private/event_annotation_listing"
   ],
   [
     "@kbn/event-annotation-plugin",
-    "src/plugins/event_annotation"
+    "src/platform/plugins/private/event_annotation"
   ],
   [
     "@kbn/event-log-fixture-plugin",
@@ -1797,11 +1793,11 @@
   ],
   [
     "@kbn/expression-gauge-plugin",
-    "src/plugins/chart_expressions/expression_gauge"
+    "src/platform/plugins/shared/chart_expressions/expression_gauge"
   ],
   [
     "@kbn/expression-heatmap-plugin",
-    "src/plugins/chart_expressions/expression_heatmap"
+    "src/platform/plugins/shared/chart_expressions/expression_heatmap"
   ],
   [
     "@kbn/expression-image-plugin",
@@ -1809,7 +1805,7 @@
   ],
   [
     "@kbn/expression-legacy-metric-vis-plugin",
-    "src/plugins/chart_expressions/expression_legacy_metric"
+    "src/platform/plugins/shared/chart_expressions/expression_legacy_metric"
   ],
   [
     "@kbn/expression-metric-plugin",
@@ -1817,11 +1813,11 @@
   ],
   [
     "@kbn/expression-metric-vis-plugin",
-    "src/plugins/chart_expressions/expression_metric"
+    "src/platform/plugins/shared/chart_expressions/expression_metric"
   ],
   [
     "@kbn/expression-partition-vis-plugin",
-    "src/plugins/chart_expressions/expression_partition_vis"
+    "src/platform/plugins/shared/chart_expressions/expression_partition_vis"
   ],
   [
     "@kbn/expression-repeat-image-plugin",
@@ -1837,11 +1833,11 @@
   ],
   [
     "@kbn/expression-tagcloud-plugin",
-    "src/plugins/chart_expressions/expression_tagcloud"
+    "src/platform/plugins/shared/chart_expressions/expression_tagcloud"
   ],
   [
     "@kbn/expression-xy-plugin",
-    "src/plugins/chart_expressions/expression_xy"
+    "src/platform/plugins/shared/chart_expressions/expression_xy"
   ],
   [
     "@kbn/expressions-explorer-plugin",
@@ -1849,7 +1845,7 @@
   ],
   [
     "@kbn/expressions-plugin",
-    "src/plugins/expressions"
+    "src/platform/plugins/shared/expressions"
   ],
   [
     "@kbn/failed-test-reporter-cli",
@@ -1869,7 +1865,7 @@
   ],
   [
     "@kbn/features-plugin",
-    "x-pack/plugins/features"
+    "x-pack/platform/plugins/shared/features"
   ],
   [
     "@kbn/features-provider-plugin",
@@ -1932,12 +1928,8 @@
     "x-pack/test/ui_capabilities/common/plugins/foo_plugin"
   ],
   [
-    "@kbn/formatters",
-    "packages/kbn-formatters"
-  ],
-  [
     "@kbn/ftr-apis-plugin",
-    "src/plugins/ftr_apis"
+    "src/platform/plugins/private/ftr_apis"
   ],
   [
     "@kbn/ftr-common-functional-services",
@@ -1973,7 +1965,7 @@
   ],
   [
     "@kbn/generate-csv",
-    "packages/kbn-generate-csv"
+    "src/platform/packages/private/kbn-generate-csv"
   ],
   [
     "@kbn/get-repo-files",
@@ -1997,7 +1989,7 @@
   ],
   [
     "@kbn/graph-plugin",
-    "x-pack/plugins/graph"
+    "x-pack/platform/plugins/private/graph"
   ],
   [
     "@kbn/grid-example-plugin",
@@ -2017,7 +2009,7 @@
   ],
   [
     "@kbn/guided-onboarding",
-    "packages/kbn-guided-onboarding"
+    "src/platform/packages/shared/kbn-guided-onboarding"
   ],
   [
     "@kbn/guided-onboarding-example-plugin",
@@ -2029,11 +2021,11 @@
   ],
   [
     "@kbn/handlebars",
-    "packages/kbn-handlebars"
+    "src/platform/packages/private/kbn-handlebars"
   ],
   [
     "@kbn/hapi-mocks",
-    "packages/kbn-hapi-mocks"
+    "src/platform/packages/private/kbn-hapi-mocks"
   ],
   [
     "@kbn/hardening-plugin",
@@ -2041,7 +2033,7 @@
   ],
   [
     "@kbn/health-gateway-server",
-    "packages/kbn-health-gateway-server"
+    "src/platform/packages/private/kbn-health-gateway-server"
   ],
   [
     "@kbn/hello-world-plugin",
@@ -2053,23 +2045,23 @@
   ],
   [
     "@kbn/home-sample-data-card",
-    "packages/home/sample_data_card"
+    "src/platform/packages/shared/home/sample_data_card"
   ],
   [
     "@kbn/home-sample-data-tab",
-    "packages/home/sample_data_tab"
+    "src/platform/packages/shared/home/sample_data_tab"
   ],
   [
     "@kbn/home-sample-data-types",
-    "packages/home/sample_data_types"
+    "src/platform/packages/shared/home/sample_data_types"
   ],
   [
     "@kbn/i18n",
-    "packages/kbn-i18n"
+    "src/platform/packages/shared/kbn-i18n"
   ],
   [
     "@kbn/i18n-react",
-    "packages/kbn-i18n-react"
+    "src/platform/packages/shared/kbn-i18n-react"
   ],
   [
     "@kbn/iframe-embedded-plugin",
@@ -2153,7 +2145,7 @@
   ],
   [
     "@kbn/interactive-setup-plugin",
-    "src/plugins/interactive_setup"
+    "src/platform/plugins/private/interactive_setup"
   ],
   [
     "@kbn/interactive-setup-test-endpoints-plugin",
@@ -2161,7 +2153,7 @@
   ],
   [
     "@kbn/interpreter",
-    "packages/kbn-interpreter"
+    "src/platform/packages/shared/kbn-interpreter"
   ],
   [
     "@kbn/inventory-e2e",
@@ -2193,7 +2185,7 @@
   ],
   [
     "@kbn/item-buffer",
-    "packages/kbn-item-buffer"
+    "src/platform/packages/private/kbn-item-buffer"
   ],
   [
     "@kbn/jest-serializers",
@@ -2249,7 +2241,7 @@
   ],
   [
     "@kbn/kibana-usage-collection-plugin",
-    "src/plugins/kibana_usage_collection"
+    "src/platform/plugins/private/kibana_usage_collection"
   ],
   [
     "@kbn/kibana-utils-plugin",
@@ -2277,7 +2269,7 @@
   ],
   [
     "@kbn/lens-formula-docs",
-    "packages/kbn-lens-formula-docs"
+    "src/platform/packages/private/kbn-lens-formula-docs"
   ],
   [
     "@kbn/lens-inline-editing-example-plugin",
@@ -2285,7 +2277,7 @@
   ],
   [
     "@kbn/lens-plugin",
-    "x-pack/plugins/lens"
+    "x-pack/platform/plugins/shared/lens"
   ],
   [
     "@kbn/license-api-guard-plugin",
@@ -2297,7 +2289,7 @@
   ],
   [
     "@kbn/licensing-plugin",
-    "x-pack/plugins/licensing"
+    "x-pack/platform/plugins/shared/licensing"
   ],
   [
     "@kbn/links-plugin",
@@ -2329,11 +2321,11 @@
   ],
   [
     "@kbn/logging",
-    "packages/kbn-logging"
+    "src/platform/packages/shared/kbn-logging"
   ],
   [
     "@kbn/logging-mocks",
-    "packages/kbn-logging-mocks"
+    "src/platform/packages/shared/kbn-logging-mocks"
   ],
   [
     "@kbn/logs-data-access-plugin",
@@ -2353,7 +2345,7 @@
   ],
   [
     "@kbn/managed-content-badge",
-    "packages/kbn-managed-content-badge"
+    "src/platform/packages/private/kbn-managed-content-badge"
   ],
   [
     "@kbn/managed-vscode-config",
@@ -2397,11 +2389,11 @@
   ],
   [
     "@kbn/management-settings-ids",
-    "packages/kbn-management/settings/setting_ids"
+    "src/platform/packages/shared/kbn-management/settings/setting_ids"
   ],
   [
     "@kbn/management-settings-section-registry",
-    "packages/kbn-management/settings/section_registry"
+    "src/platform/packages/shared/kbn-management/settings/section_registry"
   ],
   [
     "@kbn/management-settings-types",
@@ -2512,10 +2504,6 @@
     "x-pack/platform/packages/private/ml/is_populated_object"
   ],
   [
-    "@kbn/ml-kibana-theme",
-    "x-pack/platform/packages/private/ml/kibana_theme"
-  ],
-  [
     "@kbn/ml-local-storage",
     "x-pack/platform/packages/private/ml/local_storage"
   ],
@@ -2589,7 +2577,7 @@
   ],
   [
     "@kbn/monaco",
-    "packages/kbn-monaco"
+    "src/platform/packages/shared/kbn-monaco"
   ],
   [
     "@kbn/monitoring-collection-plugin",
@@ -2605,7 +2593,7 @@
   ],
   [
     "@kbn/newsfeed-plugin",
-    "src/plugins/newsfeed"
+    "src/platform/plugins/shared/newsfeed"
   ],
   [
     "@kbn/newsfeed-test-plugin",
@@ -2620,12 +2608,16 @@
     "x-pack/platform/plugins/shared/notifications"
   ],
   [
+    "@kbn/object-utils",
+    "src/platform/packages/shared/kbn-object-utils"
+  ],
+  [
     "@kbn/object-versioning",
-    "packages/kbn-object-versioning"
+    "src/platform/packages/shared/kbn-object-versioning"
   ],
   [
     "@kbn/object-versioning-utils",
-    "packages/kbn-object-versioning-utils"
+    "src/platform/packages/shared/kbn-object-versioning-utils"
   ],
   [
     "@kbn/observability-ai-assistant-app-plugin",
@@ -2674,10 +2666,6 @@
   [
     "@kbn/observability-logs-overview",
     "x-pack/platform/packages/shared/observability/logs_overview"
-  ],
-  [
-    "@kbn/observability-onboarding-e2e",
-    "x-pack/solutions/observability/plugins/observability_onboarding/e2e"
   ],
   [
     "@kbn/observability-onboarding-plugin",
@@ -2753,7 +2741,7 @@
   ],
   [
     "@kbn/palettes",
-    "packages/kbn-palettes"
+    "src/platform/packages/shared/kbn-palettes"
   ],
   [
     "@kbn/panel-loader",
@@ -2837,7 +2825,7 @@
   ],
   [
     "@kbn/random-sampling",
-    "x-pack/packages/kbn-random-sampling"
+    "x-pack/platform/packages/private/kbn-random-sampling"
   ],
   [
     "@kbn/react-field",
@@ -2849,35 +2837,35 @@
   ],
   [
     "@kbn/react-kibana-context-common",
-    "packages/react/kibana_context/common"
+    "src/platform/packages/shared/react/kibana_context/common"
   ],
   [
     "@kbn/react-kibana-context-render",
-    "packages/react/kibana_context/render"
+    "src/platform/packages/shared/react/kibana_context/render"
   ],
   [
     "@kbn/react-kibana-context-root",
-    "packages/react/kibana_context/root"
+    "src/platform/packages/shared/react/kibana_context/root"
   ],
   [
     "@kbn/react-kibana-context-styled",
-    "packages/react/kibana_context/styled"
+    "src/platform/packages/shared/react/kibana_context/styled"
   ],
   [
     "@kbn/react-kibana-context-theme",
-    "packages/react/kibana_context/theme"
+    "src/platform/packages/shared/react/kibana_context/theme"
   ],
   [
     "@kbn/react-kibana-mount",
-    "packages/react/kibana_mount"
+    "src/platform/packages/shared/react/kibana_mount"
   ],
   [
     "@kbn/react-mute-legacy-root-warning",
-    "packages/kbn-react-mute-legacy-root-warning"
+    "src/platform/packages/private/kbn-react-mute-legacy-root-warning"
   ],
   [
     "@kbn/recently-accessed",
-    "packages/kbn-recently-accessed"
+    "src/platform/packages/shared/kbn-recently-accessed"
   ],
   [
     "@kbn/relocate",
@@ -2921,39 +2909,39 @@
   ],
   [
     "@kbn/reporting-common",
-    "packages/kbn-reporting/common"
+    "src/platform/packages/private/kbn-reporting/common"
   ],
   [
     "@kbn/reporting-csv-share-panel",
-    "packages/kbn-reporting/get_csv_panel_actions"
+    "src/platform/packages/private/kbn-reporting/get_csv_panel_actions"
   ],
   [
     "@kbn/reporting-export-types-csv",
-    "packages/kbn-reporting/export_types/csv"
+    "src/platform/packages/private/kbn-reporting/export_types/csv"
   ],
   [
     "@kbn/reporting-export-types-csv-common",
-    "packages/kbn-reporting/export_types/csv_common"
+    "src/platform/packages/private/kbn-reporting/export_types/csv_common"
   ],
   [
     "@kbn/reporting-export-types-pdf",
-    "packages/kbn-reporting/export_types/pdf"
+    "src/platform/packages/private/kbn-reporting/export_types/pdf"
   ],
   [
     "@kbn/reporting-export-types-pdf-common",
-    "packages/kbn-reporting/export_types/pdf_common"
+    "src/platform/packages/private/kbn-reporting/export_types/pdf_common"
   ],
   [
     "@kbn/reporting-export-types-png",
-    "packages/kbn-reporting/export_types/png"
+    "src/platform/packages/private/kbn-reporting/export_types/png"
   ],
   [
     "@kbn/reporting-export-types-png-common",
-    "packages/kbn-reporting/export_types/png_common"
+    "src/platform/packages/private/kbn-reporting/export_types/png_common"
   ],
   [
     "@kbn/reporting-mocks-server",
-    "packages/kbn-reporting/mocks_server"
+    "src/platform/packages/private/kbn-reporting/mocks_server"
   ],
   [
     "@kbn/reporting-plugin",
@@ -2961,11 +2949,11 @@
   ],
   [
     "@kbn/reporting-public",
-    "packages/kbn-reporting/public"
+    "src/platform/packages/private/kbn-reporting/public"
   ],
   [
     "@kbn/reporting-server",
-    "packages/kbn-reporting/server"
+    "src/platform/packages/private/kbn-reporting/server"
   ],
   [
     "@kbn/resizable-layout",
@@ -2980,12 +2968,8 @@
     "x-pack/test/plugin_functional/plugins/resolver_test"
   ],
   [
-    "@kbn/response-ops-feature-flag-service",
-    "packages/response-ops/feature_flag_service"
-  ],
-  [
     "@kbn/response-ops-rule-form",
-    "packages/response-ops/rule_form"
+    "src/platform/packages/shared/response-ops/rule_form"
   ],
   [
     "@kbn/response-ops-rule-params",
@@ -3009,7 +2993,7 @@
   ],
   [
     "@kbn/router-to-openapispec",
-    "packages/kbn-router-to-openapispec"
+    "src/platform/packages/shared/kbn-router-to-openapispec"
   ],
   [
     "@kbn/router-utils",
@@ -3037,7 +3021,7 @@
   ],
   [
     "@kbn/safer-lodash-set",
-    "packages/kbn-safer-lodash-set"
+    "src/platform/packages/shared/kbn-safer-lodash-set"
   ],
   [
     "@kbn/saml-provider-plugin",
@@ -3077,7 +3061,7 @@
   ],
   [
     "@kbn/saved-objects-management-plugin",
-    "src/plugins/saved_objects_management"
+    "src/platform/plugins/shared/saved_objects_management"
   ],
   [
     "@kbn/saved-objects-plugin",
@@ -3085,7 +3069,7 @@
   ],
   [
     "@kbn/saved-objects-settings",
-    "packages/kbn-saved-objects-settings"
+    "src/platform/packages/private/kbn-saved-objects-settings"
   ],
   [
     "@kbn/saved-objects-tagging-oss-plugin",
@@ -3093,11 +3077,11 @@
   ],
   [
     "@kbn/saved-objects-tagging-plugin",
-    "x-pack/platform/plugins/private/saved_objects_tagging"
+    "x-pack/platform/plugins/shared/saved_objects_tagging"
   ],
   [
     "@kbn/saved-search-component",
-    "packages/kbn-saved-search-component"
+    "src/platform/packages/shared/kbn-saved-search-component"
   ],
   [
     "@kbn/saved-search-plugin",
@@ -3133,7 +3117,7 @@
   ],
   [
     "@kbn/screenshotting-server",
-    "packages/kbn-screenshotting-server"
+    "src/platform/packages/private/kbn-screenshotting-server"
   ],
   [
     "@kbn/search-api-keys-components",
@@ -3204,6 +3188,10 @@
     "x-pack/solutions/search/packages/search/shared_ui"
   ],
   [
+    "@kbn/search-synonyms",
+    "x-pack/solutions/search/plugins/search_synonyms"
+  ],
+  [
     "@kbn/search-types",
     "src/platform/packages/shared/kbn-search-types"
   ],
@@ -3217,43 +3205,43 @@
   ],
   [
     "@kbn/security-api-key-management",
-    "x-pack/packages/security/api_key_management"
+    "x-pack/platform/packages/shared/security/api_key_management"
   ],
   [
     "@kbn/security-authorization-core",
-    "x-pack/packages/security/authorization_core"
+    "x-pack/platform/packages/private/security/authorization_core"
   ],
   [
     "@kbn/security-authorization-core-common",
-    "x-pack/packages/security/authorization_core_common"
+    "x-pack/platform/packages/private/security/authorization_core_common"
   ],
   [
     "@kbn/security-form-components",
-    "x-pack/packages/security/form_components"
+    "x-pack/platform/packages/shared/security/form_components"
   ],
   [
     "@kbn/security-hardening",
-    "packages/kbn-security-hardening"
+    "src/platform/packages/shared/kbn-security-hardening"
   ],
   [
     "@kbn/security-plugin",
-    "x-pack/plugins/security"
+    "x-pack/platform/plugins/shared/security"
   ],
   [
     "@kbn/security-plugin-types-common",
-    "x-pack/packages/security/plugin_types_common"
+    "x-pack/platform/packages/shared/security/plugin_types_common"
   ],
   [
     "@kbn/security-plugin-types-public",
-    "x-pack/packages/security/plugin_types_public"
+    "x-pack/platform/packages/shared/security/plugin_types_public"
   ],
   [
     "@kbn/security-plugin-types-server",
-    "x-pack/packages/security/plugin_types_server"
+    "x-pack/platform/packages/shared/security/plugin_types_server"
   ],
   [
     "@kbn/security-role-management-model",
-    "x-pack/packages/security/role_management_model"
+    "x-pack/platform/packages/private/security/role_management_model"
   ],
   [
     "@kbn/security-solution-distribution-bar",
@@ -3301,7 +3289,7 @@
   ],
   [
     "@kbn/security-ui-components",
-    "x-pack/packages/security/ui_components"
+    "x-pack/platform/packages/private/security/ui_components"
   ],
   [
     "@kbn/securitysolution-autocomplete",
@@ -3385,7 +3373,7 @@
   ],
   [
     "@kbn/server-http-tools",
-    "packages/kbn-server-http-tools"
+    "src/platform/packages/shared/kbn-server-http-tools"
   ],
   [
     "@kbn/server-route-repository",
@@ -3405,7 +3393,7 @@
   ],
   [
     "@kbn/serverless-common-settings",
-    "packages/serverless/settings/common"
+    "src/platform/packages/private/serverless/settings/common"
   ],
   [
     "@kbn/serverless-observability",
@@ -3413,11 +3401,11 @@
   ],
   [
     "@kbn/serverless-observability-settings",
-    "packages/serverless/settings/observability_project"
+    "src/platform/packages/shared/serverless/settings/observability_project"
   ],
   [
     "@kbn/serverless-project-switcher",
-    "packages/serverless/project_switcher"
+    "src/platform/packages/private/serverless/project_switcher"
   ],
   [
     "@kbn/serverless-search",
@@ -3437,7 +3425,7 @@
   ],
   [
     "@kbn/serverless-types",
-    "packages/serverless/types"
+    "src/platform/packages/private/serverless/types"
   ],
   [
     "@kbn/session-notifications-plugin",
@@ -3465,203 +3453,203 @@
   ],
   [
     "@kbn/shared-ux-avatar-solution",
-    "packages/shared-ux/avatar/solution"
+    "src/platform/packages/shared/shared-ux/avatar/solution"
   ],
   [
     "@kbn/shared-ux-button-exit-full-screen",
-    "packages/shared-ux/button/exit_full_screen"
+    "src/platform/packages/shared/shared-ux/button/exit_full_screen"
   ],
   [
     "@kbn/shared-ux-button-toolbar",
-    "packages/shared-ux/button_toolbar"
+    "src/platform/packages/shared/shared-ux/button_toolbar"
   ],
   [
     "@kbn/shared-ux-card-no-data",
-    "packages/shared-ux/card/no_data/impl"
+    "src/platform/packages/shared/shared-ux/card/no_data/impl"
   ],
   [
     "@kbn/shared-ux-card-no-data-mocks",
-    "packages/shared-ux/card/no_data/mocks"
+    "src/platform/packages/shared/shared-ux/card/no_data/mocks"
   ],
   [
     "@kbn/shared-ux-card-no-data-types",
-    "packages/shared-ux/card/no_data/types"
+    "src/platform/packages/shared/shared-ux/card/no_data/types"
   ],
   [
     "@kbn/shared-ux-chrome-navigation",
-    "packages/shared-ux/chrome/navigation"
+    "src/platform/packages/shared/shared-ux/chrome/navigation"
   ],
   [
     "@kbn/shared-ux-error-boundary",
-    "packages/shared-ux/error_boundary"
+    "src/platform/packages/shared/shared-ux/error_boundary"
   ],
   [
     "@kbn/shared-ux-file-context",
-    "packages/shared-ux/file/context"
+    "src/platform/packages/shared/shared-ux/file/context"
   ],
   [
     "@kbn/shared-ux-file-image",
-    "packages/shared-ux/file/image/impl"
+    "src/platform/packages/shared/shared-ux/file/image/impl"
   ],
   [
     "@kbn/shared-ux-file-image-mocks",
-    "packages/shared-ux/file/image/mocks"
+    "src/platform/packages/shared/shared-ux/file/image/mocks"
   ],
   [
     "@kbn/shared-ux-file-mocks",
-    "packages/shared-ux/file/mocks"
+    "src/platform/packages/shared/shared-ux/file/mocks"
   ],
   [
     "@kbn/shared-ux-file-picker",
-    "packages/shared-ux/file/file_picker/impl"
+    "src/platform/packages/shared/shared-ux/file/file_picker/impl"
   ],
   [
     "@kbn/shared-ux-file-types",
-    "packages/shared-ux/file/types"
+    "src/platform/packages/shared/shared-ux/file/types"
   ],
   [
     "@kbn/shared-ux-file-upload",
-    "packages/shared-ux/file/file_upload/impl"
+    "src/platform/packages/shared/shared-ux/file/file_upload/impl"
   ],
   [
     "@kbn/shared-ux-file-util",
-    "packages/shared-ux/file/util"
+    "src/platform/packages/shared/shared-ux/file/util"
   ],
   [
     "@kbn/shared-ux-link-redirect-app",
-    "packages/shared-ux/link/redirect_app/impl"
+    "src/platform/packages/shared/shared-ux/link/redirect_app/impl"
   ],
   [
     "@kbn/shared-ux-link-redirect-app-mocks",
-    "packages/shared-ux/link/redirect_app/mocks"
+    "src/platform/packages/shared/shared-ux/link/redirect_app/mocks"
   ],
   [
     "@kbn/shared-ux-link-redirect-app-types",
-    "packages/shared-ux/link/redirect_app/types"
+    "src/platform/packages/shared/shared-ux/link/redirect_app/types"
   ],
   [
     "@kbn/shared-ux-markdown",
-    "packages/shared-ux/markdown/impl"
+    "src/platform/packages/shared/shared-ux/markdown/impl"
   ],
   [
     "@kbn/shared-ux-markdown-mocks",
-    "packages/shared-ux/markdown/mocks"
+    "src/platform/packages/shared/shared-ux/markdown/mocks"
   ],
   [
     "@kbn/shared-ux-markdown-types",
-    "packages/shared-ux/markdown/types"
+    "src/platform/packages/shared/shared-ux/markdown/types"
   ],
   [
     "@kbn/shared-ux-page-analytics-no-data",
-    "packages/shared-ux/page/analytics_no_data/impl"
+    "src/platform/packages/private/shared-ux/page/analytics_no_data/impl"
   ],
   [
     "@kbn/shared-ux-page-analytics-no-data-mocks",
-    "packages/shared-ux/page/analytics_no_data/mocks"
+    "src/platform/packages/private/shared-ux/page/analytics_no_data/mocks"
   ],
   [
     "@kbn/shared-ux-page-analytics-no-data-types",
-    "packages/shared-ux/page/analytics_no_data/types"
+    "src/platform/packages/private/shared-ux/page/analytics_no_data/types"
   ],
   [
     "@kbn/shared-ux-page-kibana-no-data",
-    "packages/shared-ux/page/kibana_no_data/impl"
+    "src/platform/packages/private/shared-ux/page/kibana_no_data/impl"
   ],
   [
     "@kbn/shared-ux-page-kibana-no-data-mocks",
-    "packages/shared-ux/page/kibana_no_data/mocks"
+    "src/platform/packages/private/shared-ux/page/kibana_no_data/mocks"
   ],
   [
     "@kbn/shared-ux-page-kibana-no-data-types",
-    "packages/shared-ux/page/kibana_no_data/types"
+    "src/platform/packages/private/shared-ux/page/kibana_no_data/types"
   ],
   [
     "@kbn/shared-ux-page-kibana-template",
-    "packages/shared-ux/page/kibana_template/impl"
+    "src/platform/packages/shared/shared-ux/page/kibana_template/impl"
   ],
   [
     "@kbn/shared-ux-page-kibana-template-mocks",
-    "packages/shared-ux/page/kibana_template/mocks"
+    "src/platform/packages/shared/shared-ux/page/kibana_template/mocks"
   ],
   [
     "@kbn/shared-ux-page-kibana-template-types",
-    "packages/shared-ux/page/kibana_template/types"
+    "src/platform/packages/shared/shared-ux/page/kibana_template/types"
   ],
   [
     "@kbn/shared-ux-page-no-data",
-    "packages/shared-ux/page/no_data/impl"
+    "src/platform/packages/shared/shared-ux/page/no_data/impl"
   ],
   [
     "@kbn/shared-ux-page-no-data-config",
-    "packages/shared-ux/page/no_data_config/impl"
+    "src/platform/packages/shared/shared-ux/page/no_data_config/impl"
   ],
   [
     "@kbn/shared-ux-page-no-data-config-mocks",
-    "packages/shared-ux/page/no_data_config/mocks"
+    "src/platform/packages/shared/shared-ux/page/no_data_config/mocks"
   ],
   [
     "@kbn/shared-ux-page-no-data-config-types",
-    "packages/shared-ux/page/no_data_config/types"
+    "src/platform/packages/shared/shared-ux/page/no_data_config/types"
   ],
   [
     "@kbn/shared-ux-page-no-data-mocks",
-    "packages/shared-ux/page/no_data/mocks"
+    "src/platform/packages/shared/shared-ux/page/no_data/mocks"
   ],
   [
     "@kbn/shared-ux-page-no-data-types",
-    "packages/shared-ux/page/no_data/types"
+    "src/platform/packages/shared/shared-ux/page/no_data/types"
   ],
   [
     "@kbn/shared-ux-page-solution-nav",
-    "packages/shared-ux/page/solution_nav"
+    "src/platform/packages/shared/shared-ux/page/solution_nav"
   ],
   [
     "@kbn/shared-ux-prompt-no-data-views",
-    "packages/shared-ux/prompt/no_data_views/impl"
+    "src/platform/packages/shared/shared-ux/prompt/no_data_views/impl"
   ],
   [
     "@kbn/shared-ux-prompt-no-data-views-mocks",
-    "packages/shared-ux/prompt/no_data_views/mocks"
+    "src/platform/packages/shared/shared-ux/prompt/no_data_views/mocks"
   ],
   [
     "@kbn/shared-ux-prompt-no-data-views-types",
-    "packages/shared-ux/prompt/no_data_views/types"
+    "src/platform/packages/shared/shared-ux/prompt/no_data_views/types"
   ],
   [
     "@kbn/shared-ux-prompt-not-found",
-    "packages/shared-ux/prompt/not_found"
+    "src/platform/packages/shared/shared-ux/prompt/not_found"
   ],
   [
     "@kbn/shared-ux-router",
-    "packages/shared-ux/router/impl"
+    "src/platform/packages/shared/shared-ux/router/impl"
   ],
   [
     "@kbn/shared-ux-router-mocks",
-    "packages/shared-ux/router/mocks"
+    "src/platform/packages/shared/shared-ux/router/mocks"
   ],
   [
     "@kbn/shared-ux-router-types",
-    "packages/shared-ux/router/types"
+    "src/platform/packages/shared/shared-ux/router/types"
   ],
   [
     "@kbn/shared-ux-storybook-config",
-    "packages/shared-ux/storybook/config"
+    "src/platform/packages/private/shared-ux/storybook/config"
   ],
   [
     "@kbn/shared-ux-storybook-mock",
-    "packages/shared-ux/storybook/mock"
+    "src/platform/packages/shared/shared-ux/storybook/mock"
   ],
   [
     "@kbn/shared-ux-tabbed-modal",
-    "packages/shared-ux/modal/tabbed"
+    "src/platform/packages/shared/shared-ux/modal/tabbed"
   ],
   [
     "@kbn/shared-ux-table-persist",
-    "packages/shared-ux/table_persist"
+    "src/platform/packages/shared/shared-ux/table_persist"
   ],
   [
     "@kbn/shared-ux-utility",
-    "packages/kbn-shared-ux-utility"
+    "src/platform/packages/shared/kbn-shared-ux-utility"
   ],
   [
     "@kbn/slo-plugin",
@@ -3685,11 +3673,11 @@
   ],
   [
     "@kbn/sort-predicates",
-    "packages/kbn-sort-predicates"
+    "src/platform/packages/shared/kbn-sort-predicates"
   ],
   [
     "@kbn/spaces-plugin",
-    "x-pack/plugins/spaces"
+    "x-pack/platform/plugins/shared/spaces"
   ],
   [
     "@kbn/spaces-test-plugin",
@@ -3733,7 +3721,7 @@
   ],
   [
     "@kbn/std",
-    "packages/kbn-std"
+    "src/platform/packages/shared/kbn-std"
   ],
   [
     "@kbn/stdio-dev-helpers",
@@ -3753,7 +3741,11 @@
   ],
   [
     "@kbn/streams-schema",
-    "x-pack/packages/kbn-streams-schema"
+    "x-pack/solutions/observability/packages/kbn-streams-schema"
+  ],
+  [
+    "@kbn/styled-components-mapping-cli",
+    "packages/kbn-styled-components-mapping-cli"
   ],
   [
     "@kbn/synthetics-e2e",
@@ -3781,19 +3773,19 @@
   ],
   [
     "@kbn/telemetry-collection-manager-plugin",
-    "src/plugins/telemetry_collection_manager"
+    "src/platform/plugins/shared/telemetry_collection_manager"
   ],
   [
     "@kbn/telemetry-collection-xpack-plugin",
-    "x-pack/plugins/telemetry_collection_xpack"
+    "x-pack/platform/plugins/private/telemetry_collection_xpack"
   ],
   [
     "@kbn/telemetry-management-section-plugin",
-    "src/plugins/telemetry_management_section"
+    "src/platform/plugins/shared/telemetry_management_section"
   ],
   [
     "@kbn/telemetry-plugin",
-    "src/plugins/telemetry"
+    "src/platform/plugins/shared/telemetry"
   ],
   [
     "@kbn/telemetry-test-plugin",
@@ -3861,7 +3853,7 @@
   ],
   [
     "@kbn/timelion-grammar",
-    "packages/kbn-timelion-grammar"
+    "src/platform/packages/private/kbn-timelion-grammar"
   ],
   [
     "@kbn/timerange",
@@ -3869,7 +3861,7 @@
   ],
   [
     "@kbn/tinymath",
-    "packages/kbn-tinymath"
+    "src/platform/packages/private/kbn-tinymath"
   ],
   [
     "@kbn/tooling-log",
@@ -3885,7 +3877,7 @@
   ],
   [
     "@kbn/transpose-utils",
-    "packages/kbn-transpose-utils"
+    "src/platform/packages/private/kbn-transpose-utils"
   ],
   [
     "@kbn/triggers-actions-ui-example-plugin",
@@ -3917,7 +3909,7 @@
   ],
   [
     "@kbn/ui-actions-browser",
-    "packages/kbn-ui-actions-browser"
+    "src/platform/packages/shared/kbn-ui-actions-browser"
   ],
   [
     "@kbn/ui-actions-enhanced-examples-plugin",
@@ -3985,7 +3977,7 @@
   ],
   [
     "@kbn/unified-search-plugin",
-    "src/plugins/unified_search"
+    "src/platform/plugins/shared/unified_search"
   ],
   [
     "@kbn/unsaved-changes-badge",
@@ -3997,7 +3989,7 @@
   ],
   [
     "@kbn/upgrade-assistant-plugin",
-    "x-pack/plugins/upgrade_assistant"
+    "x-pack/platform/plugins/private/upgrade_assistant"
   ],
   [
     "@kbn/uptime-plugin",
@@ -4005,15 +3997,15 @@
   ],
   [
     "@kbn/url-drilldown-plugin",
-    "x-pack/plugins/drilldowns/url_drilldown"
+    "x-pack/platform/plugins/private/drilldowns/url_drilldown"
   ],
   [
     "@kbn/url-forwarding-plugin",
-    "src/plugins/url_forwarding"
+    "src/platform/plugins/private/url_forwarding"
   ],
   [
     "@kbn/usage-collection-plugin",
-    "src/plugins/usage_collection"
+    "src/platform/plugins/shared/usage_collection"
   ],
   [
     "@kbn/usage-collection-test-plugin",
@@ -4021,11 +4013,11 @@
   ],
   [
     "@kbn/use-tracked-promise",
-    "packages/kbn-use-tracked-promise"
+    "src/platform/packages/shared/kbn-use-tracked-promise"
   ],
   [
     "@kbn/user-profile-components",
-    "packages/kbn-user-profile-components"
+    "src/platform/packages/shared/kbn-user-profile-components"
   ],
   [
     "@kbn/user-profile-examples-plugin",
@@ -4037,7 +4029,7 @@
   ],
   [
     "@kbn/utility-types",
-    "packages/kbn-utility-types"
+    "src/platform/packages/shared/kbn-utility-types"
   ],
   [
     "@kbn/utility-types-jest",
@@ -4061,15 +4053,15 @@
   ],
   [
     "@kbn/vis-default-editor-plugin",
-    "src/plugins/vis_default_editor"
+    "src/platform/plugins/private/vis_default_editor"
   ],
   [
     "@kbn/vis-type-gauge-plugin",
-    "src/plugins/vis_types/gauge"
+    "src/platform/plugins/private/vis_types/gauge"
   ],
   [
     "@kbn/vis-type-heatmap-plugin",
-    "src/plugins/vis_types/heatmap"
+    "src/platform/plugins/private/vis_types/heatmap"
   ],
   [
     "@kbn/vis-type-markdown-plugin",
@@ -4077,51 +4069,51 @@
   ],
   [
     "@kbn/vis-type-metric-plugin",
-    "src/plugins/vis_types/metric"
+    "src/platform/plugins/private/vis_types/metric"
   ],
   [
     "@kbn/vis-type-pie-plugin",
-    "src/plugins/vis_types/pie"
+    "src/platform/plugins/private/vis_types/pie"
   ],
   [
     "@kbn/vis-type-table-plugin",
-    "src/plugins/vis_types/table"
+    "src/platform/plugins/private/vis_types/table"
   ],
   [
     "@kbn/vis-type-tagcloud-plugin",
-    "src/plugins/vis_types/tagcloud"
+    "src/platform/plugins/private/vis_types/tagcloud"
   ],
   [
     "@kbn/vis-type-timelion-plugin",
-    "src/plugins/vis_types/timelion"
+    "src/platform/plugins/private/vis_types/timelion"
   ],
   [
     "@kbn/vis-type-timeseries-plugin",
-    "src/plugins/vis_types/timeseries"
+    "src/platform/plugins/shared/vis_types/timeseries"
   ],
   [
     "@kbn/vis-type-vega-plugin",
-    "src/plugins/vis_types/vega"
+    "src/platform/plugins/private/vis_types/vega"
   ],
   [
     "@kbn/vis-type-vislib-plugin",
-    "src/plugins/vis_types/vislib"
+    "src/platform/plugins/private/vis_types/vislib"
   ],
   [
     "@kbn/vis-type-xy-plugin",
-    "src/plugins/vis_types/xy"
+    "src/platform/plugins/private/vis_types/xy"
   ],
   [
     "@kbn/visualization-ui-components",
-    "packages/kbn-visualization-ui-components"
+    "src/platform/packages/shared/kbn-visualization-ui-components"
   ],
   [
     "@kbn/visualization-utils",
-    "packages/kbn-visualization-utils"
+    "src/platform/packages/shared/kbn-visualization-utils"
   ],
   [
     "@kbn/visualizations-plugin",
-    "src/plugins/visualizations"
+    "src/platform/plugins/shared/visualizations"
   ],
   [
     "@kbn/watcher-plugin",
@@ -4145,7 +4137,7 @@
   ],
   [
     "@kbn/zod",
-    "packages/kbn-zod"
+    "src/platform/packages/shared/kbn-zod"
   ],
   [
     "@kbn/zod-helpers",

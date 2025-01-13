@@ -90,12 +90,6 @@ export const ConfirmSettingsStep = React.memo<ConfirmSettingsStepProps>(
       generatedPair.auth ===
         (selectedAuth && translateDisplayAuthToType(selectedAuth).toLowerCase());
 
-    console.log('pair', generatedPair);
-    console.log('is', isSelectedPathGenerated);
-    console.log('path', coalescedSelectedPath);
-    console.log('auth', selectedAuth);
-    console.log('trans auth', translateDisplayAuthToType(selectedAuth ?? ''));
-
     // sets the recommended options on load
     useEffect(() => {
       const path = suggestedPaths ? suggestedPaths[0] : '';
