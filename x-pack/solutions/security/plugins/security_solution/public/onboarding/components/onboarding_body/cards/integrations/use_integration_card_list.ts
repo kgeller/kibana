@@ -7,6 +7,7 @@
 import { useMemo } from 'react';
 import type { IntegrationCardItem } from '@kbn/fleet-plugin/public';
 import { SECURITY_UI_APP_ID } from '@kbn/security-solution-navigation';
+import { RULES } from '../../../../../exceptions/translations';
 import { useNavigation } from '../../../../../common/lib/kibana';
 import {
   APP_INTEGRATIONS_PATH,
@@ -80,7 +81,7 @@ const addSecuritySpecificProps = ({
   card: IntegrationCardItem;
   installedIntegrationList?: IntegrationCardItem[];
 }): IntegrationCardItem => {
-  const onboardingLink = getAppUrl({ appId: SECURITY_UI_APP_ID, path: ONBOARDING_PATH });
+  const onboardingLink = getAppUrl({ appId: SECURITY_UI_APP_ID, path: RULES });
   const integrationRootUrl = getAppUrl({ appId: INTEGRATION_APP_ID });
   const state = {
     onCancelNavigateTo: [APP_UI_ID, { path: ONBOARDING_PATH }],

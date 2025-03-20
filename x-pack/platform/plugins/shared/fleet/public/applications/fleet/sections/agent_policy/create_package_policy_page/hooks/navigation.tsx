@@ -37,7 +37,9 @@ export const useCancelAddPackagePolicy = (params: UseCancelParams) => {
   const cancelClickHandler = useCallback(
     (ev: React.SyntheticEvent) => {
       if (routeState?.onCancelNavigateTo) {
+        console.log('routeState:', routeState);
         ev.preventDefault();
+        // navigateToApp('securitySolutionUI', { path: '/configurations' });
         navigateToApp(...routeState.onCancelNavigateTo);
       }
     },

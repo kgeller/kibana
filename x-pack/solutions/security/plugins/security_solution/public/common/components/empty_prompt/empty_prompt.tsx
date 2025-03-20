@@ -89,6 +89,7 @@ export const EmptyPromptComponent = memo(({ onSkip }: { onSkip?: () => void }) =
   }, [navigateTo]);
 
   const onClick = useCallback(() => {
+    console.log('here: empty prompt navigate');
     navigateToAddIntegrations();
   }, [navigateToAddIntegrations]);
 
