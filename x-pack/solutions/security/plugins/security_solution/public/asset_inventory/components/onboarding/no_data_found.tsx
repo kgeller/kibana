@@ -21,8 +21,10 @@ import { useSpaceId } from '../../../common/hooks/use_space_id';
 import { AssetInventoryTitle } from '../asset_inventory_title';
 import { AssetInventoryLoading } from '../asset_inventory_loading';
 import illustration from '../../../common/images/integrations_light.png';
-import { IntegrationsCardGridTabs } from '../../../onboarding/components/onboarding_body/cards/integrations/integration_card_grid_tabs';
+import { IntegrationsCardGridTabs } from '../../../onboarding/components/onboarding_body/cards/common/integrations/integration_card_grid_tabs';
 import { TEST_SUBJ_ONBOARDING_NO_DATA_FOUND } from '../../constants';
+import { INTEGRATION_TABS } from '../../../onboarding/components/onboarding_body/cards/integrations/integration_tabs_configs';
+import { IntegrationCardTopCalloutComponent } from '../../../onboarding/components/onboarding_body/cards/common/integrations/callouts/integration_card_top_callout';
 
 export const NoDataFound = () => {
   const spaceId = useSpaceId();
@@ -69,7 +71,12 @@ export const NoDataFound = () => {
         </EuiFlexGroup>
         <EuiSpacer size="l" />
         <OnboardingContextProvider spaceId={spaceId}>
-          <IntegrationsCardGridTabs installedIntegrationsCount={0} isAgentRequired={false} />
+          <IntegrationsCardGridTabs
+            installedIntegrationsCount={0}
+            isAgentRequired={false}
+            integrationTabs={INTEGRATION_TABS}
+            topCalloutRenderer={IntegrationCardTopCalloutComponent}
+          />
         </OnboardingContextProvider>
       </EuiPanel>
     </>

@@ -5,7 +5,8 @@
  * 2.0.
  */
 
-import { IntegrationTabId, type Tab } from './types';
+import { INTEGRATION_CARD_HEIGHT } from '../common/integrations/constants';
+import { IntegrationTabId, type Tab } from '../common/integrations/types';
 
 export const INTEGRATION_TABS: Tab[] = [
   {
@@ -28,6 +29,7 @@ export const INTEGRATION_TABS: Tab[] = [
       'epr:network_traffic',
       'epr:osquery_manager',
     ],
+    height: `${INTEGRATION_CARD_HEIGHT * 3.5}px`,
   },
   {
     category: 'security',
@@ -77,7 +79,3 @@ export const INTEGRATION_TABS: Tab[] = [
     sortByFeaturedIntegrations: true,
   },
 ];
-
-export const INTEGRATION_TABS_BY_ID = Object.fromEntries(
-  INTEGRATION_TABS.map((tab) => [tab.id, tab])
-) as Record<IntegrationTabId, Tab>;

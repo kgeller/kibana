@@ -7,11 +7,11 @@
 
 import { renderHook } from '@testing-library/react';
 import { useIntegrationCardList } from './use_integration_card_list';
-import { trackOnboardingLinkClick } from '../../../lib/telemetry';
+import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
 
-jest.mock('../../../lib/telemetry');
-jest.mock('../../../../../common/lib/kibana', () => ({
-  ...jest.requireActual('../../../../../common/lib/kibana'),
+jest.mock('../../../../lib/telemetry');
+jest.mock('../../../../../../common/lib/kibana', () => ({
+  ...jest.requireActual('../../../../../../common/lib/kibana'),
   useNavigation: jest.fn().mockReturnValue({
     navigateTo: jest.fn(),
     getAppUrl: jest.fn().mockReturnValue(''),

@@ -8,11 +8,11 @@ import React, { useCallback } from 'react';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { EuiIcon } from '@elastic/eui';
 
-import { LinkAnchor } from '../../../../../../common/components/links';
-import { CardCallOut } from '../../common/card_callout';
-import { useNavigation } from '../../../../../../common/lib/kibana';
+import { LinkAnchor } from '../../../../../../../common/components/links';
+import { CardCallOut } from '../../card_callout';
+import { useNavigation } from '../../../../../../../common/lib/kibana';
 import { FLEET_APP_ID, ADD_AGENT_PATH, TELEMETRY_AGENT_REQUIRED } from '../constants';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 
 const fleetAgentLinkProps = { appId: FLEET_APP_ID, path: ADD_AGENT_PATH };
 

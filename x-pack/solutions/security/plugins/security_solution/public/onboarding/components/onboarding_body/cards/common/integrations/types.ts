@@ -4,9 +4,12 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
+
+import type { IntegrationCardItem } from '@kbn/fleet-plugin/public';
+
 export interface Tab {
   category: string;
-  featuredCardIds?: string[];
+  featuredCardIds?: Array<IntegrationCardItem['id']>;
   iconType?: string;
   id: IntegrationTabId;
   label: string;
@@ -14,10 +17,12 @@ export interface Tab {
   showSearchTools?: boolean;
   subCategory?: string;
   sortByFeaturedIntegrations: boolean;
+  height?: string;
 }
 
 export enum IntegrationTabId {
   recommended = 'recommended',
+  recommendedSearchAILake = 'recommendedSearchAILake',
   network = 'network',
   user = 'user',
   endpoint = 'endpoint',

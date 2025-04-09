@@ -7,13 +7,13 @@
 
 import { render } from '@testing-library/react';
 import React from 'react';
-import { TestProviders } from '../../../../../../common/mock/test_providers';
+import { TestProviders } from '../../../../../../../common/mock/test_providers';
 import { AgentlessAvailableCallout } from './agentless_available_callout';
-import { useKibana } from '../../../../../../common/lib/kibana';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+import { useKibana } from '../../../../../../../common/lib/kibana';
+import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 
-jest.mock('../../../../../../common/lib/kibana');
-jest.mock('../../../../lib/telemetry');
+jest.mock('../../../../../../../common/lib/kibana');
+jest.mock('../../../../../lib/telemetry');
 
 describe('AgentlessAvailableCallout', () => {
   const mockUseKibana = useKibana as jest.Mock;

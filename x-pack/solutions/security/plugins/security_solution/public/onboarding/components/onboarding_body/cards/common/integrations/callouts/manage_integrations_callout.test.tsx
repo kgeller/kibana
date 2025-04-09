@@ -7,16 +7,16 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ManageIntegrationsCallout } from './manage_integrations_callout';
-import { TestProviders } from '../../../../../../common/mock/test_providers';
+import { TestProviders } from '../../../../../../../common/mock/test_providers';
 
-jest.mock('../../../../../../common/hooks/use_add_integrations_url', () => ({
+jest.mock('../../../../../../../common/hooks/use_add_integrations_url', () => ({
   useAddIntegrationsUrl: jest.fn().mockReturnValue({
     href: '/test-url',
     onClick: jest.fn(),
   }),
 }));
 
-jest.mock('../../common/card_callout', () => ({
+jest.mock('../../card_callout', () => ({
   CardCallOut: ({ text }: { text: React.ReactNode }) => <div>{text}</div>,
 }));
 

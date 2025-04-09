@@ -11,9 +11,10 @@ import type { AlertsCardItemId } from '../alerts/types';
 import type { DashboardsCardItemId } from '../dashboards/types';
 import { useCardSelectorListStyles } from './card_selector_list.styles';
 import { HEIGHT_ANIMATION_DURATION } from '../../onboarding_card_panel.styles';
+import type { KnowledgeSourceCardItemId } from '../search_ai_lake/knowledge_source/types';
 
 export interface CardSelectorListItem {
-  id: RulesCardItemId | AlertsCardItemId | DashboardsCardItemId;
+  id: RulesCardItemId | AlertsCardItemId | DashboardsCardItemId | KnowledgeSourceCardItemId;
   title: string;
   description: string;
 }

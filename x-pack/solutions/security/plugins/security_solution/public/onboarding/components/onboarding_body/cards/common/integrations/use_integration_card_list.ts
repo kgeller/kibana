@@ -7,12 +7,12 @@
 import { useMemo } from 'react';
 import type { IntegrationCardItem } from '@kbn/fleet-plugin/public';
 import { SECURITY_UI_APP_ID } from '@kbn/security-solution-navigation';
-import { useNavigation } from '../../../../../common/lib/kibana';
+import { useNavigation } from '../../../../../../common/lib/kibana';
 import {
   APP_INTEGRATIONS_PATH,
   APP_UI_ID,
   ONBOARDING_PATH,
-} from '../../../../../../common/constants';
+} from '../../../../../../../common/constants';
 import {
   CARD_DESCRIPTION_LINE_CLAMP,
   CARD_TITLE_LINE_CLAMP,
@@ -22,8 +22,8 @@ import {
   RETURN_PATH,
   TELEMETRY_INTEGRATION_CARD,
 } from './constants';
-import type { GetAppUrl, NavigateTo } from '../../../../../common/lib/kibana';
-import { trackOnboardingLinkClick } from '../../../lib/telemetry';
+import type { GetAppUrl, NavigateTo } from '../../../../../../common/lib/kibana';
+import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
 
 const addPathParamToUrl = (url: string, onboardingLink: string) => {
   const encoded = encodeURIComponent(onboardingLink);
@@ -91,6 +91,7 @@ const addSecuritySpecificProps = ({
     card.url.indexOf(APP_INTEGRATIONS_PATH) >= 0 && onboardingLink
       ? addPathParamToUrl(card.url, ONBOARDING_PATH)
       : card.url;
+
   return {
     ...card,
     titleLineClamp: CARD_TITLE_LINE_CLAMP,

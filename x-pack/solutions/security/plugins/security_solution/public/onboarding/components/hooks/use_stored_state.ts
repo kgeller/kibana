@@ -7,7 +7,7 @@
 
 import useLocalStorage from 'react-use/lib/useLocalStorage';
 import type { OnboardingCardId } from '../../constants';
-import type { IntegrationTabId } from '../onboarding_body/cards/integrations/types';
+import type { IntegrationTabId } from '../onboarding_body/cards/common/integrations/types';
 import type { CardSelectorListItem } from '../onboarding_body/cards/common/card_selector_list';
 
 const LocalStorageKey = {
@@ -52,7 +52,7 @@ export const useStoredUrlDetails = (spaceId: string) =>
  * Stores the selected selectable card ID per space
  */
 export const useStoredSelectedCardItemId = (
-  cardType: 'alerts' | 'dashboards' | 'rules',
+  cardType: 'alerts' | 'dashboards' | 'rules' | 'knowledgeSource',
   spaceId: string,
   defaultSelectedCardItemId: CardSelectorListItem['id']
 ) =>

@@ -13,15 +13,15 @@ import * as module from '@kbn/fleet-plugin/public';
 import {
   useStoredIntegrationSearchTerm,
   useStoredIntegrationTabId,
-} from '../../../hooks/use_stored_state';
-import { DEFAULT_TAB } from './constants';
-import { trackOnboardingLinkClick } from '../../../lib/telemetry';
+} from '../../../../hooks/use_stored_state';
+import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+import { INTEGRATION_TABS } from '../../integrations/integration_tabs_configs';
 
-jest.mock('../../../onboarding_context');
-jest.mock('../../../hooks/use_stored_state');
-jest.mock('../../../lib/telemetry');
-jest.mock('../../../../../common/lib/kibana', () => ({
-  ...jest.requireActual('../../../../../common/lib/kibana'),
+jest.mock('../../../../onboarding_context');
+jest.mock('../../../../hooks/use_stored_state');
+jest.mock('../../../../lib/telemetry');
+jest.mock('../../../../../../common/lib/kibana', () => ({
+  ...jest.requireActual('../../../../../../common/lib/kibana'),
   useNavigation: jest.fn().mockReturnValue({
     navigateTo: jest.fn(),
     getAppUrl: jest.fn(),
@@ -48,11 +48,12 @@ describe('IntegrationsCardGridTabsComponent', () => {
     installedIntegrationsCount: 1,
     isAgentRequired: false,
     useAvailablePackages: mockUseAvailablePackages,
+    integrationTabs: INTEGRATION_TABS,
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (useStoredIntegrationTabId as jest.Mock).mockReturnValue([DEFAULT_TAB.id, jest.fn()]);
+    (useStoredIntegrationTabId as jest.Mock).mockReturnValue([INTEGRATION_TABS[0].id, jest.fn()]);
     (useStoredIntegrationSearchTerm as jest.Mock).mockReturnValue(['', jest.fn()]);
   });
 

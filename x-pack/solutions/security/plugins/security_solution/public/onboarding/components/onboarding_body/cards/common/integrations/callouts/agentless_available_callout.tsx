@@ -10,10 +10,10 @@ import { FormattedMessage } from '@kbn/i18n-react';
 import { EuiIcon, useEuiTheme } from '@elastic/eui';
 import { css } from '@emotion/react';
 
-import { useKibana } from '../../../../../../common/lib/kibana';
-import { LinkAnchor } from '../../../../../../common/components/links';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
-import { CardCallOut } from '../../common/card_callout';
+import { useKibana } from '../../../../../../../common/lib/kibana';
+import { LinkAnchor } from '../../../../../../../common/components/links';
+import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
+import { CardCallOut } from '../../card_callout';
 import { TELEMETRY_AGENTLESS_LEARN_MORE } from '../constants';
 
 export const AgentlessAvailableCallout = React.memo(() => {

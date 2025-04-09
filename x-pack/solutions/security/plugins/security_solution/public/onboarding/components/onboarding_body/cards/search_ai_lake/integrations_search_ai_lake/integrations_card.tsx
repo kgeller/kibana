@@ -6,20 +6,20 @@
  */
 import React from 'react';
 
-import type { OnboardingCardComponent } from '../../../../types';
-import { OnboardingCardContentPanel } from '../common/card_content_panel';
-import { IntegrationsCardGridTabsComponent } from '../common/integrations/integration_card_grid_tabs';
-import { CenteredLoadingSpinner } from '../../../../../common/components/centered_loading_spinner';
-import type { IntegrationCardMetadata } from '../common/integrations/types';
+import type { OnboardingCardComponent } from '../../../../../types';
+import { OnboardingCardContentPanel } from '../../common/card_content_panel';
+import { IntegrationsCardGridTabsComponent } from '../../common/integrations/integration_card_grid_tabs';
+import { CenteredLoadingSpinner } from '../../../../../../common/components/centered_loading_spinner';
+import type { IntegrationCardMetadata } from '../../common/integrations/types';
 import { INTEGRATION_TABS } from './integration_tabs_configs';
-import { IntegrationCardTopCalloutComponent } from '../common/integrations/callouts/integration_card_top_callout';
+import { ManageIntegrationsCallout } from '../../common/integrations/callouts/manage_integrations_callout';
 import {
   WithFilteredIntegrations,
   type RenderChildrenType,
-} from '../common/integrations/use_filter_cards';
-import { useSelectedTab } from '../common/integrations/use_selected_tab';
-import { useOnboardingContext } from '../../../onboarding_context';
-import { useIntegrationCardList } from '../common/integrations/use_integration_card_list';
+} from '../../common/integrations/use_filter_cards';
+import { useSelectedTab } from '../../common/integrations/use_selected_tab';
+import { useOnboardingContext } from '../../../../onboarding_context';
+import { useEnhancedIntegrationCards } from '../../../../../../common/lib/search_ai_lake/hooks';
 
 const RenderChildren: RenderChildrenType = ({
   allowedIntegrations,
@@ -27,20 +27,24 @@ const RenderChildren: RenderChildrenType = ({
   checkCompleteMetadata,
   useSelectedTabResult,
 }) => {
-  const list = useIntegrationCardList({
-    integrationsList: allowedIntegrations,
-    featuredCardIds: useSelectedTabResult.selectedTab?.featuredCardIds,
+  const { available: list } = useEnhancedIntegrationCards(allowedIntegrations, {
+    showInstallationStatus: true,
+    showCompressedInstallationStatus: true,
   });
   const { installedIntegrationsCount, isAgentRequired } = checkCompleteMetadata;
+
   return (
     <IntegrationsCardGridTabsComponent
       isAgentRequired={isAgentRequired}
       installedIntegrationsCount={installedIntegrationsCount}
       integrationTabs={INTEGRATION_TABS}
-      topCalloutRenderer={IntegrationCardTopCalloutComponent}
+      topCalloutRenderer={installedIntegrationsCount ? ManageIntegrationsCallout : undefined}
       integrationList={list}
       useAvailablePackagesResult={useAvailablePackagesResult}
       useSelectedTabResult={useSelectedTabResult}
+      packageListGridOptions={{
+        showCardLabels: true,
+      }}
     />
   );
 };
@@ -53,6 +57,7 @@ export const IntegrationsCard: OnboardingCardComponent<IntegrationCardMetadata> 
       spaceId,
       integrationTabs: INTEGRATION_TABS,
     });
+
     if (!checkCompleteMetadata) {
       return <CenteredLoadingSpinner data-test-subj="loadingInstalledIntegrations" />;
     }
@@ -61,7 +66,7 @@ export const IntegrationsCard: OnboardingCardComponent<IntegrationCardMetadata> 
       <OnboardingCardContentPanel>
         <WithFilteredIntegrations
           renderChildren={RenderChildren}
-          prereleaseIntegrationsEnabled={false}
+          prereleaseIntegrationsEnabled={true}
           checkCompleteMetadata={checkCompleteMetadata}
           useSelectedTabResult={useSelectedTabResult}
         />

@@ -5,19 +5,23 @@
  * 2.0.
  */
 
-import type { StartServices } from '../../../../../types';
-import type { OnboardingCardCheckComplete } from '../../../../types';
+import type { StartServices } from '../../../../../../types';
+import type { OnboardingCardCheckComplete } from '../../../../../types';
 import {
-  getAgentsData,
   getCompleteBadgeText,
+  getAgentsData,
   getIntegrationList,
-} from '../common/integrations/integrations_check_complete';
-import type { IntegrationCardMetadata } from '../common/integrations/types';
+} from '../../common/integrations/integrations_check_complete';
+import type { IntegrationCardMetadata } from '../../common/integrations/types';
+import { INTEGRATION_TABS } from './integration_tabs_configs';
 
 export const checkIntegrationsCardComplete: OnboardingCardCheckComplete<
   IntegrationCardMetadata
 > = async (services: StartServices) => {
-  const { isComplete, installedPackages } = await getIntegrationList(services);
+  const { isComplete, installedPackages } = await getIntegrationList(
+    services,
+    INTEGRATION_TABS[0].featuredCardIds
+  );
 
   const { isAgentRequired } = await getAgentsData(services, isComplete);
 

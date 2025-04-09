@@ -8,10 +8,10 @@ import React, { useCallback } from 'react';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { EuiIcon } from '@elastic/eui';
 
-import { LinkAnchor } from '../../../../../../common/components/links';
-import { CardCallOut } from '../../common/card_callout';
-import { useAddIntegrationsUrl } from '../../../../../../common/hooks/use_add_integrations_url';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+import { LinkAnchor } from '../../../../../../../common/components/links';
+import { CardCallOut } from '../../card_callout';
+import { useAddIntegrationsUrl } from '../../../../../../../common/hooks/use_add_integrations_url';
+import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 import { TELEMETRY_MANAGE_INTEGRATIONS } from '../constants';
 
 export const ManageIntegrationsCallout = React.memo(

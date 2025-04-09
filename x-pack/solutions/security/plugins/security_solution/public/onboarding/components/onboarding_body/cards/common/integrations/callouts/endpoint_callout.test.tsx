@@ -13,11 +13,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { EndpointCallout } from './endpoint_callout';
-import { TestProviders } from '../../../../../../common/mock/test_providers';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+import { TestProviders } from '../../../../../../../common/mock/test_providers';
+import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 
-jest.mock('../../../../../../common/lib/kibana');
-jest.mock('../../../../lib/telemetry');
+jest.mock('../../../../../../../common/lib/kibana');
+jest.mock('../../../../../lib/telemetry');
 
 describe('EndpointCallout', () => {
   beforeEach(() => {

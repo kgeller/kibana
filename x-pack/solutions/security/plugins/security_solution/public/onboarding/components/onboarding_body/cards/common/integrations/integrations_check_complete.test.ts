@@ -6,7 +6,7 @@
  */
 import { checkIntegrationsCardComplete } from './integrations_check_complete';
 import { installationStatuses } from '@kbn/fleet-plugin/public';
-import type { StartServices } from '../../../../../types';
+import type { StartServices } from '../../../../../../types';
 
 import { lastValueFrom } from 'rxjs';
 
