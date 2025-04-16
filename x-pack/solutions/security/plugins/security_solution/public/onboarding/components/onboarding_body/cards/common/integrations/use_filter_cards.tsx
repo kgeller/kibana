@@ -22,22 +22,22 @@ export const useFilterCards = ({
   featuredCardIds?: string[];
   prereleaseIntegrationsEnabled: boolean;
 }) => {
-  const useAvailablePackagesResult = useAvailablePackages({
+  const availablePackagesResult = useAvailablePackages({
     prereleaseIntegrationsEnabled,
   });
 
-  const allowedIntegrations = useAvailablePackagesResult.filteredCards.filter(
+  const allowedIntegrations = availablePackagesResult.filteredCards.filter(
     (card) => (featuredCardIds?.includes(card.name) || featuredCardIds?.includes(card.id)) ?? true
   );
-  return { useAvailablePackagesResult, allowedIntegrations };
+  return { availablePackagesResult, allowedIntegrations };
 };
 
 export type RenderChildrenType = React.FC<{
   allowedIntegrations: IntegrationCardItem[];
-  useAvailablePackagesResult: ReturnType<AvailablePackagesHookType>;
-  checkCompleteMetadata: IntegrationCardMetadata;
+  availablePackagesResult: ReturnType<AvailablePackagesHookType>;
+  checkCompleteMetadata?: IntegrationCardMetadata;
   featuredCardIds?: string[];
-  useSelectedTabResult: UseSelectedTabReturn;
+  selectedTabResult: UseSelectedTabReturn;
 }>;
 
 export const AvailableCardsComponent = ({
@@ -45,25 +45,25 @@ export const AvailableCardsComponent = ({
   renderChildren,
   prereleaseIntegrationsEnabled,
   checkCompleteMetadata,
-  useSelectedTabResult,
+  selectedTabResult,
 }: {
   useAvailablePackages: AvailablePackagesHookType;
   renderChildren: RenderChildrenType;
   prereleaseIntegrationsEnabled: boolean;
-  checkCompleteMetadata: IntegrationCardMetadata;
-  useSelectedTabResult: UseSelectedTabReturn;
+  checkCompleteMetadata?: IntegrationCardMetadata;
+  selectedTabResult: UseSelectedTabReturn;
 }) => {
-  const { useAvailablePackagesResult, allowedIntegrations } = useFilterCards({
-    featuredCardIds: useSelectedTabResult.selectedTab?.featuredCardIds,
+  const { availablePackagesResult, allowedIntegrations } = useFilterCards({
+    featuredCardIds: selectedTabResult.selectedTab?.featuredCardIds,
     useAvailablePackages,
     prereleaseIntegrationsEnabled,
   });
 
   return renderChildren({
     allowedIntegrations,
-    useAvailablePackagesResult,
+    availablePackagesResult,
     checkCompleteMetadata,
-    useSelectedTabResult,
+    selectedTabResult,
   });
 };
 

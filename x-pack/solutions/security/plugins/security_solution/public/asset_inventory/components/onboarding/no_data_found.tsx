@@ -16,15 +16,34 @@ import {
 } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { i18n } from '@kbn/i18n';
-import { OnboardingContextProvider } from '../../../onboarding/components/onboarding_context';
+import {
+  OnboardingContextProvider,
+  useOnboardingContext,
+} from '../../../onboarding/components/onboarding_context';
 import { useSpaceId } from '../../../common/hooks/use_space_id';
 import { AssetInventoryTitle } from '../asset_inventory_title';
 import { AssetInventoryLoading } from '../asset_inventory_loading';
 import illustration from '../../../common/images/integrations_light.png';
-import { IntegrationsCardGridTabs } from '../../../onboarding/components/onboarding_body/cards/common/integrations/integration_card_grid_tabs';
 import { TEST_SUBJ_ONBOARDING_NO_DATA_FOUND } from '../../constants';
 import { INTEGRATION_TABS } from '../../../onboarding/components/onboarding_body/cards/integrations/integration_tabs_configs';
-import { IntegrationCardTopCalloutComponent } from '../../../onboarding/components/onboarding_body/cards/common/integrations/callouts/integration_card_top_callout';
+import { WithFilteredIntegrations } from '../../../onboarding/components/onboarding_body/cards/common/integrations/use_filter_cards';
+import { IntegrationsCardGridTabs } from '../../../onboarding/components/onboarding_body/cards/integrations/integrations_card';
+import { useSelectedTab } from '../../../onboarding/components/onboarding_body/cards/common/integrations/use_selected_tab';
+
+const WithFilteredIntegrationsWrapper: React.FC = () => {
+  const { spaceId } = useOnboardingContext();
+  const selectedTabResult = useSelectedTab({
+    spaceId,
+    integrationTabs: INTEGRATION_TABS,
+  });
+  return (
+    <WithFilteredIntegrations
+      renderChildren={IntegrationsCardGridTabs}
+      prereleaseIntegrationsEnabled={false}
+      selectedTabResult={selectedTabResult}
+    />
+  );
+};
 
 export const NoDataFound = () => {
   const spaceId = useSpaceId();
@@ -71,12 +90,7 @@ export const NoDataFound = () => {
         </EuiFlexGroup>
         <EuiSpacer size="l" />
         <OnboardingContextProvider spaceId={spaceId}>
-          <IntegrationsCardGridTabs
-            installedIntegrationsCount={0}
-            isAgentRequired={false}
-            integrationTabs={INTEGRATION_TABS}
-            topCalloutRenderer={IntegrationCardTopCalloutComponent}
-          />
+          <WithFilteredIntegrationsWrapper />
         </OnboardingContextProvider>
       </EuiPanel>
     </>

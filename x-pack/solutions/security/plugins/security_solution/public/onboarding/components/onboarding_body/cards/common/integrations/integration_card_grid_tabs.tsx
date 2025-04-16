@@ -26,7 +26,6 @@ import {
   TELEMETRY_INTEGRATION_TAB,
   DEFAULT_INTEGRATION_CARD_CONTENT_HEIGHT,
 } from './constants';
-import type { Tab } from './types';
 import { IntegrationTabId } from './types';
 import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
 import { useIntegrationCardGridTabsStyles } from './integration_card_grid_tabs.styles';
@@ -35,15 +34,14 @@ import type { UseSelectedTabReturn } from './use_selected_tab';
 export interface IntegrationsCardGridTabsProps {
   installedIntegrationsCount: number;
   isAgentRequired: boolean;
-  useAvailablePackagesResult: ReturnType<AvailablePackagesHookType>;
-  integrationTabs: Tab[];
+  availablePackagesResult: ReturnType<AvailablePackagesHookType>;
   topCalloutRenderer?: React.FC<{
     installedIntegrationsCount: number;
     isAgentRequired: boolean;
     selectedTabId: IntegrationTabId;
   }>;
   integrationList: IntegrationCardItem[];
-  useSelectedTabResult: UseSelectedTabReturn;
+  selectedTabResult: UseSelectedTabReturn;
   packageListGridOptions?: {
     showCardLabels?: boolean;
   };
@@ -63,17 +61,17 @@ export const IntegrationsCardGridTabsComponent = React.memo<IntegrationsCardGrid
     installedIntegrationsCount,
     isAgentRequired,
     topCalloutRenderer: TopCallout,
-    integrationTabs,
     integrationList,
-    useAvailablePackagesResult,
-    useSelectedTabResult,
+    availablePackagesResult,
+    selectedTabResult,
     packageListGridOptions,
   }) => {
     const { spaceId } = useOnboardingContext();
     const scrollElement = useRef<HTMLDivElement>(null);
     const { colorMode } = useEuiTheme();
     const isDark = colorMode === COLOR_MODES_STANDARD.dark;
-    const { selectedTab, toggleIdSelected, setSelectedTabIdToStorage } = useSelectedTabResult;
+    const { selectedTab, toggleIdSelected, setSelectedTabIdToStorage, integrationTabs } =
+      selectedTabResult;
     const [searchTermFromStorage, setSearchTermToStorage] = useStoredIntegrationSearchTerm(spaceId);
     const onTabChange = useCallback(
       (stringId: string) => {
@@ -87,7 +85,7 @@ export const IntegrationsCardGridTabsComponent = React.memo<IntegrationsCardGrid
     );
 
     const { isLoading, searchTerm, setCategory, setSearchTerm, setSelectedSubCategory } =
-      useAvailablePackagesResult;
+      availablePackagesResult;
 
     const buttonGroupStyles = useIntegrationCardGridTabsStyles();
 

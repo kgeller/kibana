@@ -37,5 +37,5 @@ export const useSelectedTab = ({
     [integrationTabs, integrationTabsById, toggleIdSelected]
   );
 
-  return { selectedTab, toggleIdSelected, setSelectedTabIdToStorage };
+  return { selectedTab, toggleIdSelected, setSelectedTabIdToStorage, integrationTabs };
 };

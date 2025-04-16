@@ -20,12 +20,13 @@ import {
 import { useSelectedTab } from '../../common/integrations/use_selected_tab';
 import { useOnboardingContext } from '../../../../onboarding_context';
 import { useEnhancedIntegrationCards } from '../../../../../../common/lib/search_ai_lake/hooks';
+import { DEFAULT_CHECK_COMPLETE_METADATA } from '../../integrations/integrations_card';
 
-const RenderChildren: RenderChildrenType = ({
+const IntegrationsCardGridTabs: RenderChildrenType = ({
   allowedIntegrations,
-  useAvailablePackagesResult,
-  checkCompleteMetadata,
-  useSelectedTabResult,
+  availablePackagesResult,
+  checkCompleteMetadata = DEFAULT_CHECK_COMPLETE_METADATA,
+  selectedTabResult,
 }) => {
   const { available: list } = useEnhancedIntegrationCards(allowedIntegrations, {
     showInstallationStatus: true,
@@ -37,11 +38,10 @@ const RenderChildren: RenderChildrenType = ({
     <IntegrationsCardGridTabsComponent
       isAgentRequired={isAgentRequired}
       installedIntegrationsCount={installedIntegrationsCount}
-      integrationTabs={INTEGRATION_TABS}
       topCalloutRenderer={installedIntegrationsCount ? ManageIntegrationsCallout : undefined}
       integrationList={list}
-      useAvailablePackagesResult={useAvailablePackagesResult}
-      useSelectedTabResult={useSelectedTabResult}
+      availablePackagesResult={availablePackagesResult}
+      selectedTabResult={selectedTabResult}
       packageListGridOptions={{
         showCardLabels: true,
       }}
@@ -53,7 +53,7 @@ export const IntegrationsCard: OnboardingCardComponent<IntegrationCardMetadata> 
   ({ checkCompleteMetadata }) => {
     const { spaceId } = useOnboardingContext();
 
-    const useSelectedTabResult = useSelectedTab({
+    const selectedTabResult = useSelectedTab({
       spaceId,
       integrationTabs: INTEGRATION_TABS,
     });
@@ -65,10 +65,10 @@ export const IntegrationsCard: OnboardingCardComponent<IntegrationCardMetadata> 
     return (
       <OnboardingCardContentPanel>
         <WithFilteredIntegrations
-          renderChildren={RenderChildren}
+          renderChildren={IntegrationsCardGridTabs}
           prereleaseIntegrationsEnabled={true}
           checkCompleteMetadata={checkCompleteMetadata}
-          useSelectedTabResult={useSelectedTabResult}
+          selectedTabResult={selectedTabResult}
         />
       </OnboardingCardContentPanel>
     );
