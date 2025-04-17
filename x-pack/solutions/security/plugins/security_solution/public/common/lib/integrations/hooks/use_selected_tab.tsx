@@ -6,8 +6,8 @@
  */
 
 import { useMemo } from 'react';
-import { useStoredIntegrationTabId } from '../../../../hooks/use_stored_state';
-import type { Tab } from './types';
+import { useStoredIntegrationTabId } from './use_stored_state';
+import type { Tab } from '../types';
 
 export type UseSelectedTabReturn = ReturnType<typeof useSelectedTab>;
 

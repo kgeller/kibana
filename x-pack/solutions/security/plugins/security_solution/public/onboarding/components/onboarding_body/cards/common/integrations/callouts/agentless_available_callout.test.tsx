@@ -10,10 +10,10 @@ import React from 'react';
 import { TestProviders } from '../../../../../../../common/mock/test_providers';
 import { AgentlessAvailableCallout } from './agentless_available_callout';
 import { useKibana } from '../../../../../../../common/lib/kibana';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
+import { mockTrackLinkClick } from '../../../../../__mocks__/mocks';
 
 jest.mock('../../../../../../../common/lib/kibana');
-jest.mock('../../../../../lib/telemetry');
+jest.mock('../../../../../onboarding_context');
 
 describe('AgentlessAvailableCallout', () => {
   const mockUseKibana = useKibana as jest.Mock;
@@ -70,6 +70,6 @@ describe('AgentlessAvailableCallout', () => {
 
     getByTestId('agentlessLearnMoreLink').click();
 
-    expect(trackOnboardingLinkClick).toHaveBeenCalledWith('agentless_learn_more');
+    expect(mockTrackLinkClick).toHaveBeenCalledWith('agentless_learn_more');
   });
 });

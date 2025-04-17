@@ -7,12 +7,8 @@
 import { useMemo } from 'react';
 import type { IntegrationCardItem } from '@kbn/fleet-plugin/public';
 import { SECURITY_UI_APP_ID } from '@kbn/security-solution-navigation';
-import { useNavigation } from '../../../../../../common/lib/kibana';
-import {
-  APP_INTEGRATIONS_PATH,
-  APP_UI_ID,
-  ONBOARDING_PATH,
-} from '../../../../../../../common/constants';
+import { useNavigation } from '../../kibana';
+import { APP_INTEGRATIONS_PATH, APP_UI_ID, ONBOARDING_PATH } from '../../../../../common/constants';
 import {
   CARD_DESCRIPTION_LINE_CLAMP,
   CARD_TITLE_LINE_CLAMP,
@@ -21,9 +17,10 @@ import {
   RETURN_APP_ID,
   RETURN_PATH,
   TELEMETRY_INTEGRATION_CARD,
-} from './constants';
-import type { GetAppUrl, NavigateTo } from '../../../../../../common/lib/kibana';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+} from '../constants';
+import type { GetAppUrl, NavigateTo } from '../../kibana';
+import type { TrackLinkClick } from './integration_context';
+import { useIntegrationContext } from './integration_context';
 
 const addPathParamToUrl = (url: string, onboardingLink: string) => {
   const encoded = encodeURIComponent(onboardingLink);
@@ -50,15 +47,23 @@ const getFilteredCards = ({
   installedIntegrationList,
   integrationsList,
   navigateTo,
+  trackLinkClick,
 }: {
   featuredCardIds?: string[];
   getAppUrl: GetAppUrl;
   installedIntegrationList?: IntegrationCardItem[];
   integrationsList: IntegrationCardItem[];
   navigateTo: NavigateTo;
+  trackLinkClick?: TrackLinkClick;
 }) => {
   const securityIntegrationsList = integrationsList.map((card) =>
-    addSecuritySpecificProps({ navigateTo, getAppUrl, card, installedIntegrationList })
+    addSecuritySpecificProps({
+      navigateTo,
+      getAppUrl,
+      card,
+      installedIntegrationList,
+      trackLinkClick,
+    })
   );
   if (!featuredCardIds) {
     return { featuredCards: [], integrationCards: securityIntegrationsList };
@@ -74,11 +79,13 @@ const addSecuritySpecificProps = ({
   navigateTo,
   getAppUrl,
   card,
+  trackLinkClick,
 }: {
   navigateTo: NavigateTo;
   getAppUrl: GetAppUrl;
   card: IntegrationCardItem;
   installedIntegrationList?: IntegrationCardItem[];
+  trackLinkClick?: TrackLinkClick;
 }): IntegrationCardItem => {
   const onboardingLink = getAppUrl({ appId: SECURITY_UI_APP_ID, path: ONBOARDING_PATH });
   const integrationRootUrl = getAppUrl({ appId: INTEGRATION_APP_ID });
@@ -101,7 +108,7 @@ const addSecuritySpecificProps = ({
     url,
     onCardClick: () => {
       const trackId = `${TELEMETRY_INTEGRATION_CARD}_${card.id}`;
-      trackOnboardingLinkClick(trackId);
+      trackLinkClick?.(trackId);
       if (url.startsWith(APP_INTEGRATIONS_PATH)) {
         navigateTo({
           appId: INTEGRATION_APP_ID,
@@ -125,10 +132,19 @@ export const useIntegrationCardList = ({
   featuredCardIds?: string[] | undefined;
 }): IntegrationCardItem[] => {
   const { navigateTo, getAppUrl } = useNavigation();
-
+  const {
+    telemetry: { trackLinkClick },
+  } = useIntegrationContext();
   const { featuredCards, integrationCards } = useMemo(
-    () => getFilteredCards({ navigateTo, getAppUrl, integrationsList, featuredCardIds }),
-    [navigateTo, getAppUrl, integrationsList, featuredCardIds]
+    () =>
+      getFilteredCards({
+        navigateTo,
+        getAppUrl,
+        integrationsList,
+        featuredCardIds,
+        trackLinkClick,
+      }),
+    [navigateTo, getAppUrl, integrationsList, featuredCardIds, trackLinkClick]
   );
 
   if (featuredCardIds && featuredCardIds.length > 0) {

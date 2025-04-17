@@ -12,17 +12,20 @@ import { css } from '@emotion/react';
 
 import { useKibana } from '../../../../../../../common/lib/kibana';
 import { LinkAnchor } from '../../../../../../../common/components/links';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 import { CardCallOut } from '../../card_callout';
 import { TELEMETRY_AGENTLESS_LEARN_MORE } from '../constants';
+import { useOnboardingContext } from '../../../../../onboarding_context';
 
 export const AgentlessAvailableCallout = React.memo(() => {
   const { euiTheme } = useEuiTheme();
   const { docLinks } = useKibana().services;
+  const {
+    telemetry: { trackLinkClick },
+  } = useOnboardingContext();
 
   const onClick = useCallback(() => {
-    trackOnboardingLinkClick(TELEMETRY_AGENTLESS_LEARN_MORE);
-  }, []);
+    trackLinkClick?.(TELEMETRY_AGENTLESS_LEARN_MORE);
+  }, [trackLinkClick]);
 
   /* @ts-expect-error: add the blog link to `packages/kbn-doc-links/src/get_doc_links.ts` when it is ready and remove this exit condition*/
   if (!docLinks.links.fleet.agentlessBlog) {

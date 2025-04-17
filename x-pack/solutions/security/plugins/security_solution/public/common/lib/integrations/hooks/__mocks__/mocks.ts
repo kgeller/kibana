@@ -5,22 +5,15 @@
  * 2.0.
  */
 
-export const mockReportCardOpen = jest.fn();
-export const mockReportCardComplete = jest.fn();
-export const mockReportCardLinkClicked = jest.fn();
 export const mockTrackLinkClick = jest.fn();
 
 export const telemetry = {
-  reportCardOpen: mockReportCardOpen,
-  reportCardComplete: mockReportCardComplete,
-  reportCardLinkClicked: mockReportCardLinkClicked,
   trackLinkClick: mockTrackLinkClick,
 };
 export const mockTelemetry = jest.fn(() => telemetry);
 
-export const onboardingContext = {
+export const integrationContext = {
   spaceId: 'default',
   telemetry: mockTelemetry(),
-  config: new Map(),
 };
-export const mockOnboardingContext = jest.fn(() => onboardingContext);
+export const mockIntegrationContext = jest.fn(() => integrationContext);

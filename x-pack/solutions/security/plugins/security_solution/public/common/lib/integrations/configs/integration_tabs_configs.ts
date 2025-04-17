@@ -5,8 +5,8 @@
  * 2.0.
  */
 
-import { INTEGRATION_CARD_HEIGHT } from '../common/integrations/constants';
-import { IntegrationTabId, type Tab } from '../common/integrations/types';
+import { INTEGRATION_CARD_HEIGHT } from '../constants';
+import { IntegrationTabId, type Tab } from '../types';
 
 export const INTEGRATION_TABS: Tab[] = [
   {

@@ -13,15 +13,19 @@ import { css } from '@emotion/react';
 import { useKibana } from '../../../../../../../common/lib/kibana';
 import { LinkAnchor } from '../../../../../../../common/components/links';
 import { CardCallOut } from '../../card_callout';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 import { TELEMETRY_ENDPOINT_LEARN_MORE } from '../constants';
+import { useIntegrationContext } from '../../../../../../../common/lib/integrations/hooks/integration_context';
 
 export const EndpointCallout = React.memo(() => {
   const { euiTheme } = useEuiTheme();
   const { docLinks } = useKibana().services;
+  const {
+    telemetry: { trackLinkClick },
+  } = useIntegrationContext();
+
   const onClick = useCallback(() => {
-    trackOnboardingLinkClick(TELEMETRY_ENDPOINT_LEARN_MORE);
-  }, []);
+    trackLinkClick?.(TELEMETRY_ENDPOINT_LEARN_MORE);
+  }, [trackLinkClick]);
 
   return (
     <CardCallOut

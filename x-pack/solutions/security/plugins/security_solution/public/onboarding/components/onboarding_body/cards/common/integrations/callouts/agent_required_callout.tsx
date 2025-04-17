@@ -12,20 +12,24 @@ import { LinkAnchor } from '../../../../../../../common/components/links';
 import { CardCallOut } from '../../card_callout';
 import { useNavigation } from '../../../../../../../common/lib/kibana';
 import { FLEET_APP_ID, ADD_AGENT_PATH, TELEMETRY_AGENT_REQUIRED } from '../constants';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
+import { useIntegrationContext } from '../../../../../../../common/lib/integrations/hooks/integration_context';
 
 const fleetAgentLinkProps = { appId: FLEET_APP_ID, path: ADD_AGENT_PATH };
 
 export const AgentRequiredCallout = React.memo(() => {
   const { getAppUrl, navigateTo } = useNavigation();
   const addAgentLink = getAppUrl(fleetAgentLinkProps);
+  const {
+    telemetry: { trackLinkClick },
+  } = useIntegrationContext();
+
   const onAddAgentClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
-      trackOnboardingLinkClick(TELEMETRY_AGENT_REQUIRED);
+      trackLinkClick?.(TELEMETRY_AGENT_REQUIRED);
       navigateTo(fleetAgentLinkProps);
     },
-    [navigateTo]
+    [navigateTo, trackLinkClick]
   );
 
   return (

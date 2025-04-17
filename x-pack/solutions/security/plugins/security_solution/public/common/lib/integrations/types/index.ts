@@ -4,8 +4,13 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
+import type { AvailablePackagesHookType, IntegrationCardItem } from '@kbn/fleet-plugin/public';
+import type { UseSelectedTabReturn } from '../hooks/use_selected_tab';
 
-import type { IntegrationCardItem } from '@kbn/fleet-plugin/public';
+export interface IntegrationCardMetadata {
+  installedIntegrationsCount: number;
+  isAgentRequired: boolean;
+}
 
 export interface Tab {
   category: string;
@@ -31,7 +36,22 @@ export enum IntegrationTabId {
   all = 'all',
 }
 
-export interface IntegrationCardMetadata {
+export type TopCalloutRenderer = React.FC<{
   installedIntegrationsCount: number;
   isAgentRequired: boolean;
-}
+  selectedTabId: IntegrationTabId;
+}>;
+
+export type AvailablePackagesResult = Pick<
+  ReturnType<AvailablePackagesHookType>,
+  'isLoading' | 'searchTerm' | 'setCategory' | 'setSearchTerm' | 'setSelectedSubCategory'
+>;
+
+export type RenderChildrenType = React.FC<{
+  allowedIntegrations: IntegrationCardItem[];
+  availablePackagesResult: AvailablePackagesResult;
+  checkCompleteMetadata?: IntegrationCardMetadata;
+  featuredCardIds?: string[];
+  selectedTabResult: UseSelectedTabReturn;
+  topCalloutRenderer?: TopCalloutRenderer;
+}>;

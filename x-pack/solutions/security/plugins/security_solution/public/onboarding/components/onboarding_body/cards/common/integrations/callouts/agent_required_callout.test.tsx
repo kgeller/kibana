@@ -14,10 +14,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { AgentRequiredCallout } from './agent_required_callout';
 import { TestProviders } from '../../../../../../../common/mock/test_providers';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
+import { mockTrackLinkClick } from '../../../../../../../common/lib/integrations/hooks/__mocks__/mocks';
 
-jest.mock('../../../../../../../common/lib/kibana');
-jest.mock('../../../../../lib/telemetry');
+jest.mock('../../../../../../../common/lib/integrations/hooks/integration_context');
 
 describe('AgentRequiredCallout', () => {
   beforeEach(() => {
@@ -38,6 +37,6 @@ describe('AgentRequiredCallout', () => {
 
     getByTestId('agentLink').click();
 
-    expect(trackOnboardingLinkClick).toHaveBeenCalledWith('agent_required');
+    expect(mockTrackLinkClick).toHaveBeenCalledWith('agent_required');
   });
 });

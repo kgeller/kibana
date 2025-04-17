@@ -5,6 +5,7 @@
  * 2.0.
  */
 
+import type { IntegrationCardMetadata } from '../../../../../../common/lib/integrations/types';
 import type { StartServices } from '../../../../../../types';
 import type { OnboardingCardCheckComplete } from '../../../../../types';
 import {
@@ -12,7 +13,6 @@ import {
   getAgentsData,
   getIntegrationList,
 } from '../../common/integrations/integrations_check_complete';
-import type { IntegrationCardMetadata } from '../../common/integrations/types';
 import { INTEGRATION_TABS } from './integration_tabs_configs';
 
 export const checkIntegrationsCardComplete: OnboardingCardCheckComplete<

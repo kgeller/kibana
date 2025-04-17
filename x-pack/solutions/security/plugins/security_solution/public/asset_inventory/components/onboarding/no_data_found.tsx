@@ -16,34 +16,13 @@ import {
 } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { i18n } from '@kbn/i18n';
-import {
-  OnboardingContextProvider,
-  useOnboardingContext,
-} from '../../../onboarding/components/onboarding_context';
 import { useSpaceId } from '../../../common/hooks/use_space_id';
 import { AssetInventoryTitle } from '../asset_inventory_title';
 import { AssetInventoryLoading } from '../asset_inventory_loading';
 import illustration from '../../../common/images/integrations_light.png';
 import { TEST_SUBJ_ONBOARDING_NO_DATA_FOUND } from '../../constants';
-import { INTEGRATION_TABS } from '../../../onboarding/components/onboarding_body/cards/integrations/integration_tabs_configs';
-import { WithFilteredIntegrations } from '../../../onboarding/components/onboarding_body/cards/common/integrations/use_filter_cards';
-import { IntegrationsCardGridTabs } from '../../../onboarding/components/onboarding_body/cards/integrations/integrations_card';
-import { useSelectedTab } from '../../../onboarding/components/onboarding_body/cards/common/integrations/use_selected_tab';
-
-const WithFilteredIntegrationsWrapper: React.FC = () => {
-  const { spaceId } = useOnboardingContext();
-  const selectedTabResult = useSelectedTab({
-    spaceId,
-    integrationTabs: INTEGRATION_TABS,
-  });
-  return (
-    <WithFilteredIntegrations
-      renderChildren={IntegrationsCardGridTabs}
-      prereleaseIntegrationsEnabled={false}
-      selectedTabResult={selectedTabResult}
-    />
-  );
-};
+import { SecurityIntegrations } from '../../../common/lib/integrations/components';
+import { IntegrationContextProvider } from '../../../common/lib/integrations/hooks/integration_context';
 
 export const NoDataFound = () => {
   const spaceId = useSpaceId();
@@ -89,9 +68,9 @@ export const NoDataFound = () => {
           </EuiFlexItem>
         </EuiFlexGroup>
         <EuiSpacer size="l" />
-        <OnboardingContextProvider spaceId={spaceId}>
-          <WithFilteredIntegrationsWrapper />
-        </OnboardingContextProvider>
+        <IntegrationContextProvider spaceId={spaceId}>
+          <SecurityIntegrations />
+        </IntegrationContextProvider>
       </EuiPanel>
     </>
   );

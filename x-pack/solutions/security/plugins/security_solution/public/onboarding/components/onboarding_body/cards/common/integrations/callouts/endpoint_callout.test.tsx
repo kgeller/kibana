@@ -14,10 +14,10 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { EndpointCallout } from './endpoint_callout';
 import { TestProviders } from '../../../../../../../common/mock/test_providers';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
+import { mockTrackLinkClick } from '../../../../../../../common/lib/integrations/hooks/__mocks__/mocks';
 
 jest.mock('../../../../../../../common/lib/kibana');
-jest.mock('../../../../../lib/telemetry');
+jest.mock('../../../../../../../common/lib/integrations/hooks/integration_context');
 
 describe('EndpointCallout', () => {
   beforeEach(() => {
@@ -38,6 +38,6 @@ describe('EndpointCallout', () => {
 
     getByTestId('endpointLearnMoreLink').click();
 
-    expect(trackOnboardingLinkClick).toHaveBeenCalledWith('endpoint_learn_more');
+    expect(mockTrackLinkClick).toHaveBeenCalledWith('endpoint_learn_more');
   });
 });

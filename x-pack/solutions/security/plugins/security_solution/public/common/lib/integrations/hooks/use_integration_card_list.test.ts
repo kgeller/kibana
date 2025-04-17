@@ -7,11 +7,12 @@
 
 import { renderHook } from '@testing-library/react';
 import { useIntegrationCardList } from './use_integration_card_list';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
+import { mockTrackLinkClick } from './__mocks__/mocks';
 
-jest.mock('../../../../lib/telemetry');
-jest.mock('../../../../../../common/lib/kibana', () => ({
-  ...jest.requireActual('../../../../../../common/lib/kibana'),
+jest.mock('./integration_context');
+
+jest.mock('../../kibana', () => ({
+  ...jest.requireActual('../../kibana'),
   useNavigation: jest.fn().mockReturnValue({
     navigateTo: jest.fn(),
     getAppUrl: jest.fn().mockReturnValue(''),
@@ -87,6 +88,6 @@ describe('useIntegrationCardList', () => {
     const card = result.current[0];
     card.onCardClick?.();
 
-    expect(trackOnboardingLinkClick).toHaveBeenCalledWith('card_epr:endpoint');
+    expect(mockTrackLinkClick).toHaveBeenCalledWith('card_epr:endpoint');
   });
 });

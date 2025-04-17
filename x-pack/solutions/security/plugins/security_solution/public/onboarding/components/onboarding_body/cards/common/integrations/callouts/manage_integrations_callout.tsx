@@ -11,20 +11,23 @@ import { EuiIcon } from '@elastic/eui';
 import { LinkAnchor } from '../../../../../../../common/components/links';
 import { CardCallOut } from '../../card_callout';
 import { useAddIntegrationsUrl } from '../../../../../../../common/hooks/use_add_integrations_url';
-import { trackOnboardingLinkClick } from '../../../../../lib/telemetry';
 import { TELEMETRY_MANAGE_INTEGRATIONS } from '../constants';
+import { useIntegrationContext } from '../../../../../../../common/lib/integrations/hooks/integration_context';
 
 export const ManageIntegrationsCallout = React.memo(
   ({ installedIntegrationsCount }: { installedIntegrationsCount: number }) => {
     const { href: integrationUrl, onClick: onAddIntegrationClicked } = useAddIntegrationsUrl();
+    const {
+      telemetry: { trackLinkClick },
+    } = useIntegrationContext();
 
     const onClick = useCallback(
       (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        trackOnboardingLinkClick(TELEMETRY_MANAGE_INTEGRATIONS);
+        trackLinkClick?.(TELEMETRY_MANAGE_INTEGRATIONS);
         onAddIntegrationClicked(e);
       },
-      [onAddIntegrationClicked]
+      [onAddIntegrationClicked, trackLinkClick]
     );
 
     if (!installedIntegrationsCount) {

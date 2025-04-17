@@ -8,8 +8,8 @@
 import React from 'react';
 import IntegrationsCard from './integrations_card';
 import { render } from '@testing-library/react';
-jest.mock('../../common/integrations/integration_card_grid_tabs');
-
+jest.mock('../../../../onboarding_context');
+jest.mock('../../../../../../common/lib/integrations/components/with_filtered_integrations');
 const props = {
   setComplete: jest.fn(),
   checkComplete: jest.fn(),
@@ -38,6 +38,6 @@ describe('IntegrationsCard', () => {
       />
     );
     expect(queryByTestId('loadingInstalledIntegrations')).not.toBeInTheDocument();
-    expect(queryByTestId('integrationsCardGridTabs')).toBeInTheDocument();
+    expect(queryByTestId('withFilteredIntegrations')).toBeInTheDocument();
   });
 });

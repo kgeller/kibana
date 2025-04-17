@@ -13,28 +13,28 @@ import {
   EuiSkeletonText,
   useEuiTheme,
 } from '@elastic/eui';
-import type { AvailablePackagesHookType, IntegrationCardItem } from '@kbn/fleet-plugin/public';
+import type { IntegrationCardItem } from '@kbn/fleet-plugin/public';
 import { noop } from 'lodash';
 
 import { css } from '@emotion/react';
-import { useStoredIntegrationSearchTerm } from '../../../../hooks/use_stored_state';
-import { useOnboardingContext } from '../../../../onboarding_context';
+import { useIntegrationCardGridTabsStyles } from '../hooks/integration_card_grid_tabs.styles';
 import {
+  DEFAULT_INTEGRATION_CARD_CONTENT_HEIGHT,
   LOADING_SKELETON_TEXT_LINES,
   SCROLL_ELEMENT_ID,
   SEARCH_FILTER_CATEGORIES,
   TELEMETRY_INTEGRATION_TAB,
-  DEFAULT_INTEGRATION_CARD_CONTENT_HEIGHT,
-} from './constants';
-import { IntegrationTabId } from './types';
-import { trackOnboardingLinkClick } from '../../../../lib/telemetry';
-import { useIntegrationCardGridTabsStyles } from './integration_card_grid_tabs.styles';
-import type { UseSelectedTabReturn } from './use_selected_tab';
+} from '../constants';
+import type { AvailablePackagesResult } from '../types';
+import { IntegrationTabId } from '../types';
+import type { UseSelectedTabReturn } from '../hooks/use_selected_tab';
+import { useStoredIntegrationSearchTerm } from '../hooks/use_stored_state';
+import { useIntegrationContext } from '../hooks/integration_context';
 
 export interface IntegrationsCardGridTabsProps {
   installedIntegrationsCount: number;
   isAgentRequired: boolean;
-  availablePackagesResult: ReturnType<AvailablePackagesHookType>;
+  availablePackagesResult: AvailablePackagesResult;
   topCalloutRenderer?: React.FC<{
     installedIntegrationsCount: number;
     isAgentRequired: boolean;
@@ -58,15 +58,18 @@ export const PackageListGrid = lazy(async () => ({
 // beware if local storage, need to add project id to the key
 export const IntegrationsCardGridTabsComponent = React.memo<IntegrationsCardGridTabsProps>(
   ({
-    installedIntegrationsCount,
     isAgentRequired,
+    installedIntegrationsCount,
     topCalloutRenderer: TopCallout,
     integrationList,
     availablePackagesResult,
     selectedTabResult,
     packageListGridOptions,
   }) => {
-    const { spaceId } = useOnboardingContext();
+    const {
+      spaceId,
+      telemetry: { trackLinkClick },
+    } = useIntegrationContext();
     const scrollElement = useRef<HTMLDivElement>(null);
     const { colorMode } = useEuiTheme();
     const isDark = colorMode === COLOR_MODES_STANDARD.dark;
@@ -79,9 +82,9 @@ export const IntegrationsCardGridTabsComponent = React.memo<IntegrationsCardGrid
         const trackId = `${TELEMETRY_INTEGRATION_TAB}_${id}`;
         scrollElement.current?.scrollTo?.(0, 0);
         setSelectedTabIdToStorage(id);
-        trackOnboardingLinkClick(trackId);
+        trackLinkClick?.(trackId);
       },
-      [setSelectedTabIdToStorage]
+      [setSelectedTabIdToStorage, trackLinkClick]
     );
 
     const { isLoading, searchTerm, setCategory, setSearchTerm, setSelectedSubCategory } =

@@ -7,7 +7,7 @@
 
 import { INTEGRATION_CARD_HEIGHT } from '../../common/integrations/constants';
 import { SEARCH_AI_LAKE_ALLOWED_INTEGRATIONS } from '../../../../../../common/lib/search_ai_lake/integrations';
-import { IntegrationTabId, type Tab } from '../../common/integrations/types';
+import { IntegrationTabId, type Tab } from '../../../../../../common/lib/integrations/types';
 
 export const INTEGRATION_TABS: Tab[] = [
   {
