@@ -82,7 +82,10 @@ import type { ArchiveAsset } from '../kibana/assets/install';
 import type { PackageUpdateEvent } from '../../upgrade_sender';
 import { sendTelemetryEvents, UpdateEventType } from '../../upgrade_sender';
 import { auditLoggingService } from '../../audit_logging';
-import { getFilteredInstallPackages } from '../filtered_packages';
+import {
+  getAllowedSearchAiLakeInstallPackages,
+  getFilteredInstallPackages,
+} from '../filtered_packages';
 import { isAgentlessEnabled, isOnlyAgentlessIntegration } from '../../utils/agentless';
 
 import { _stateMachineInstallPackage } from './install_state_machine/_state_machine_package_install';
@@ -648,6 +651,13 @@ export async function installPackageWithStateMachine(options: {
 
     const filteredPackages = getFilteredInstallPackages();
     if (filteredPackages.includes(pkgName)) {
+      throw new FleetUnauthorizedError(`${pkgName} installation is not authorized`);
+    }
+
+    const allowlistPackages = getAllowedSearchAiLakeInstallPackages();
+    // This will only trigger for the Serverless Security SearchAILake tier.
+    if (allowlistPackages && !allowlistPackages.includes(pkgName)) {
+      console.log('blocked');
       throw new FleetUnauthorizedError(`${pkgName} installation is not authorized`);
     }
 
