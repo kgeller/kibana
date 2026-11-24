@@ -10,6 +10,7 @@ import type { AutomaticImportPluginRequestHandlerContext } from '../types';
 import { registerIntegrationRoutes } from './integrations_route';
 import { registerDataStreamRoutes } from './data_stream_routes';
 import { registerIndexMappingRoutes } from './index_mapping_route';
+import { registerStreamRoutes } from './stream_routes';
 
 export function registerRoutes(
   router: IRouter<AutomaticImportPluginRequestHandlerContext>,
@@ -18,4 +19,5 @@ export function registerRoutes(
   registerIntegrationRoutes(router, logger);
   registerDataStreamRoutes(router, logger);
   registerIndexMappingRoutes(router, logger);
+  registerStreamRoutes(router, logger);
 }

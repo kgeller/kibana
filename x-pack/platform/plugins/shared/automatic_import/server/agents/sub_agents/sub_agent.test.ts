@@ -67,6 +67,7 @@ const baseState: AutomaticImportAgentStateType = {
   analysis: 'analysis',
   review: '',
   field_mappings: [],
+  candidate_patterns: '',
 };
 
 const samples = ['{"a":1}', '{"a":2}'];
@@ -124,6 +125,20 @@ describe('buildSubAgentContext', () => {
 
   it('returns the analyzer task unchanged when there are no samples and no user context', () => {
     expect(buildSubAgentContext('log_and_ecs_analyzer', 'Analyze', baseState, [])).toBe('Analyze');
+  });
+
+  it('gives candidate patterns to the generator only', () => {
+    const state = {
+      ...baseState,
+      candidate_patterns: '<candidate_patterns>x</candidate_patterns>',
+    };
+
+    expect(buildSubAgentContext('ingest_pipeline_generator', 'Build', state, samples)).toContain(
+      '<candidate_patterns>x</candidate_patterns>'
+    );
+    expect(buildSubAgentContext('review_agent', 'Review', state, samples)).not.toContain(
+      '<candidate_patterns>'
+    );
   });
 
   it('returns the task unchanged for an unknown sub-agent', () => {

@@ -39,6 +39,8 @@ import { INGEST_PIPELINE_GENERATOR_PROMPT } from '../../agents/prompts';
 import { formatUserContextBlock, type UserProvidedContext } from '../../agents/user_context';
 import type { LangSmithOptions } from '../../routes/types';
 import { PhaseCallbackHandler, type ReportPhaseFn } from '../../agents/phase_callback_handler';
+import { TokenUsageCallbackHandler } from '../../agents/token_usage_callback_handler';
+import { findCandidatePatterns, formatCandidatePatterns } from '../../agents/candidate_patterns';
 
 export class AgentService {
   private logger: Logger;
@@ -48,6 +50,20 @@ export class AgentService {
     logger: LoggerFactory
   ) {
     this.logger = logger.get('agentService');
+  }
+
+  private getCandidatePatterns(samples: string[]): string {
+    const startTime = Date.now();
+    try {
+      const patterns = findCandidatePatterns(samples);
+      this.logger.info(
+        `Found ${patterns.length} candidate patterns in ${Date.now() - startTime}ms`
+      );
+      return formatCandidatePatterns(patterns);
+    } catch (error) {
+      this.logger.warn(`Candidate pattern extraction failed: ${error}`);
+      return '';
+    }
   }
 
   public async invokeAutomaticImportAgent(
@@ -166,7 +182,11 @@ ${ecsRootFieldsSummary}
         }),
       ],
       current_pipeline: BOILERPLATE_PIPELINE,
+      candidate_patterns: this.getCandidatePatterns(samples),
     };
+
+    const tokenUsage = new TokenUsageCallbackHandler();
+    const startTime = Date.now();
 
     // Without an enclosing inference span, every LLM call is exported as its own trace.
     const result = await withActiveInferenceSpan(
@@ -188,6 +208,7 @@ ${ecsRootFieldsSummary}
             callbacks: [
               ...langSmithTracers,
               ...(phaseCallbackHandler ? [phaseCallbackHandler] : []),
+              tokenUsage,
             ],
             runName: 'automatic_import_agent',
             tags: ['automatic_import_agent'],
@@ -199,6 +220,14 @@ ${ecsRootFieldsSummary}
     if (phaseCallbackHandler) {
       await phaseCallbackHandler.flushPendingPhase();
     }
+
+    this.logger.info(
+      `Agent run for ${integrationId}/${dataStreamId}: ${tokenUsage.llmCalls} LLM calls, ${
+        tokenUsage.inputTokens
+      } input tokens, ${tokenUsage.outputTokens} output tokens, ${Math.round(
+        (Date.now() - startTime) / 1000
+      )}s`
+    );
 
     return result;
   }

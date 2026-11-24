@@ -32,6 +32,7 @@ import {
   ImportLifecycleFlyoutProvider,
   useImportLifecycleFlyoutContext,
 } from '../stream_detail_lifecycle/import_from_stream';
+import { useAutomaticImportHeader } from './automatic_import/automatic_import_header';
 
 const classicStreamManagementSubTabs = [
   'overview',
@@ -100,6 +101,7 @@ function ClassicStreamDetailManagementContent({
   } = useStreamsPrivileges();
 
   const isProcessingEnabled = !definition.replicated;
+  const automaticImportHeader = useAutomaticImportHeader(definition.stream.name);
 
   const backToStreamsLabel = i18n.translate('xpack.streams.streamDetailView.backToStreamsLabel', {
     defaultMessage: 'Streams',
@@ -229,7 +231,15 @@ function ClassicStreamDetailManagementContent({
   }
 
   if (isValidManagementSubTab(tab) && tabs[tab]?.content) {
-    return <Wrapper tabs={tabs} streamId={key} tab={tab} />;
+    return (
+      <Wrapper
+        tabs={tabs}
+        streamId={key}
+        tab={tab}
+        extraBadges={automaticImportHeader.badges}
+        extraMenuItems={automaticImportHeader.menuItems}
+      />
+    );
   }
 
   const redirectConfig = tabRedirects[tab];

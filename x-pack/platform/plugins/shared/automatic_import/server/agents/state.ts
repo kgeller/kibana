@@ -71,6 +71,11 @@ export const AutomaticImportAgentState = Annotation.Root({
     reducer: lastValueReducer,
     default: () => [],
   }),
+  /** Draft parsing patterns from the non-AI pattern finders, for the generator only. */
+  candidate_patterns: Annotation<string>({
+    reducer: lastValueReducer,
+    default: () => '',
+  }),
 });
 
 export type AutomaticImportAgentStateType = typeof AutomaticImportAgentState.State;

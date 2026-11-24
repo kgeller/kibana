@@ -63,16 +63,31 @@ export type ManagementTabs = Record<string, ManagementTab>;
 const getTabTestSubj = (tabName: string, tab: ManagementTab) =>
   tab['data-test-subj'] ?? `streamsAppManagementTab-${tabName}`;
 
+/** A badge in the stream's page header; `label` names it in the overflow list. */
+export interface StreamHeaderBadge {
+  label: string;
+  node: ReactElement;
+}
+
+/** An item in the stream's page header menu. */
+export type StreamHeaderMenuItem = NonNullable<AppHeaderMenu['items']>[number];
+
 export function Wrapper({
   tabs,
   streamId,
   tab,
   topContent,
+  extraBadges = [],
+  extraMenuItems = [],
 }: {
   tabs: ManagementTabs;
   streamId: string;
   tab: string;
   topContent?: ReactNode;
+  /** Badges added after retention, before the stream type badge. */
+  extraBadges?: StreamHeaderBadge[];
+  /** Menu items added before "Delete stream". */
+  extraMenuItems?: StreamHeaderMenuItem[];
 }) {
   const router = useStreamsAppRouter();
   const streamsHomeLink = useStreamsHomeLink();
@@ -163,7 +178,7 @@ export function Wrapper({
   // Badges are ordered by relevance (per design): "Technical preview" stays pinned first, then data
   // quality (kept visible before the overflow popover), then retention, then the stream type/mode
   // badges. The stream type (classic/wired) is the least important and is expected to be phased out.
-  const streamBadges: Array<{ label: string; node: ReactElement }> = [];
+  const streamBadges: StreamHeaderBadge[] = [];
   if (
     Streams.WiredStream.GetResponse.is(definition) &&
     ROOT_STREAM_NAMES.includes(definition.stream.name as RootStreamName)
@@ -223,6 +238,7 @@ export function Wrapper({
       });
     }
   }
+  streamBadges.push(...extraBadges);
   if (Streams.ClassicStream.GetResponse.is(definition)) {
     streamBadges.push({
       label: i18n.translate('xpack.streams.entityDetailViewWithoutParams.unmanagedBadgeLabel', {
@@ -299,7 +315,7 @@ export function Wrapper({
       return undefined;
     }
 
-    const items: NonNullable<AppHeaderMenu['items']> = [];
+    const items: NonNullable<AppHeaderMenu['items']> = [...extraMenuItems];
     if (canDeleteStream) {
       items.push({
         id: 'delete',
@@ -331,7 +347,14 @@ export function Wrapper({
       ...(primaryActionItem ? { primaryActionItem } : {}),
       ...(items.length ? { items } : {}),
     };
-  }, [definition, canDeleteStream, discoverHref, deleteStreamLabel, viewInDiscoverLabel]);
+  }, [
+    definition,
+    canDeleteStream,
+    discoverHref,
+    deleteStreamLabel,
+    viewInDiscoverLabel,
+    extraMenuItems,
+  ]);
 
   const appHeaderTabs: AppHeaderTab[] = Object.entries(tabs).map(([tabName, currentTab]) => ({
     id: tabName,

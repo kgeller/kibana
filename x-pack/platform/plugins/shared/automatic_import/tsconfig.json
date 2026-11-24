@@ -15,6 +15,8 @@
     "target/**/*"
   ],
   "kbn_references": [
+    "@kbn/grok-heuristics",
+    "@kbn/dissect-heuristics",
     "@kbn/core",
     "@kbn/licensing-plugin",
     "@kbn/licensing-types",

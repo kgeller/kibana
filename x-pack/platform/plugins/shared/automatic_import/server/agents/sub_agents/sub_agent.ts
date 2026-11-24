@@ -100,6 +100,10 @@ const buildGeneratorContext: ContextBuilder = (
     parts.push('', '<log_format_analysis>', state.analysis, '</log_format_analysis>');
   }
 
+  if (!isReviewIteration && state.candidate_patterns) {
+    parts.push('', state.candidate_patterns);
+  }
+
   if (!isReviewIteration && samples && samples.length > 0) {
     const slice = samples.slice(0, MAX_INJECTED_SAMPLES);
     parts.push(
